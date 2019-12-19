@@ -1,0 +1,131 @@
+{
+    "name": "Bitpay",
+    "description": "<p>Accept Bitcoin and Bitcoin Cash, store and spend them securely, or turn Bitcoin into dollars with the BitPay Card.<\/p>",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/26409-blockchain.jpg",
+    "tags": [
+        "api provider",
+        "bitcoin",
+        "blockchain",
+        "financial services",
+        "have api",
+        "international trade",
+        "marketplaces",
+        "money",
+        "profile"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/bitpay\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Bitpay",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/26409-blockchain.jpg",
+            "humanURL": "http:\/\/bitcoin.org",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/bitpay-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/bitpay-postman-collection.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Blog",
+            "url": "https:\/\/bitcoin.org\/en\/blog"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "https:\/\/bitcoin.org\/en\/rss\/blog.xml"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/bitpay"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/blockchain-info"
+        },
+        {
+            "type": "Developers",
+            "url": "https:\/\/bitcoin.org\/en\/bitcoin-for-developers"
+        },
+        {
+            "type": "Developers",
+            "url": "https:\/\/bitcoin.org\/en\/bitcoin-for-developers"
+        },
+        {
+            "type": "Documentation",
+            "url": "https:\/\/bitcoin.org\/en\/developer-documentation"
+        },
+        {
+            "type": "Documentation",
+            "url": "https:\/\/bitcoin.org\/en\/privacy"
+        },
+        {
+            "type": "Email",
+            "url": "privacy@bitcoin.org"
+        },
+        {
+            "type": "Email",
+            "url": "media@bitpay.com"
+        },
+        {
+            "type": "Email",
+            "url": "compliance@bitpay.com"
+        },
+        {
+            "type": "Email",
+            "url": "marketing@bitpay.com"
+        },
+        {
+            "type": "Email",
+            "url": "careers@bitpay.com"
+        },
+        {
+            "type": "Facebook",
+            "url": "https:\/\/www.facebook.com\/bitcoins"
+        },
+        {
+            "type": "FAQ",
+            "url": "https:\/\/bitcoin.org\/en\/faq"
+        },
+        {
+            "type": "Getting Started",
+            "url": "https:\/\/bitcoin.org\/en\/getting-started"
+        },
+        {
+            "type": "Integrations",
+            "url": "https:\/\/bitpay.com\/integrations"
+        },
+        {
+            "type": "Press",
+            "url": "https:\/\/bitcoin.org\/en\/press"
+        },
+        {
+            "type": "Privacy",
+            "url": "https:\/\/bitcoin.org\/en\/privacy"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/BitPay"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/bitcoin.org"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/bitpay.com"
+        }
+    ]
+}
