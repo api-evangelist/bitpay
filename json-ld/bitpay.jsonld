@@ -1,0 +1,92 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "bitpay": "https://developer.bitpay.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Invoice": "bitpay:Invoice",
+    "Bill": "bitpay:Bill",
+    "Payout": "bitpay:Payout",
+    "Refund": "bitpay:Refund",
+    "Settlement": "bitpay:Settlement",
+    "LedgerEntry": "bitpay:LedgerEntry",
+    "invoiceId": "bitpay:invoiceId",
+    "invoiceStatus": "bitpay:invoiceStatus",
+    "btcPrice": "bitpay:btcPrice",
+    "btcDue": "bitpay:btcDue",
+    "btcPaid": "bitpay:btcPaid",
+    "expirationTime": "bitpay:expirationTime",
+    "transactionSpeed": "bitpay:transactionSpeed",
+    "posData": "bitpay:posData",
+    "facade": "bitpay:facade",
+    "token": "bitpay:token",
+    "payoutStatus": "bitpay:payoutStatus",
+    "ledgerCurrency": "bitpay:ledgerCurrency",
+    "recipientId": "bitpay:recipientId",
+    "settlementId": "bitpay:settlementId",
+    "ledgerEntriesSum": "bitpay:ledgerEntriesSum",
+    "withHoldingsSum": "bitpay:withHoldingsSum",
+    "rate": "bitpay:rate",
+    "baseCurrency": "bitpay:baseCurrency"
+  },
+  "@graph": [
+    {
+      "@type": "WebAPI",
+      "@id": "https://bitpay.com",
+      "name": "BitPay API",
+      "description": "BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data.",
+      "url": "https://developer.bitpay.com/docs",
+      "documentation": "https://developer.bitpay.com/reference",
+      "termsOfService": "https://www.bitpay.com/legal/terms-of-use",
+      "provider": {
+        "@type": "Organization",
+        "name": "BitPay",
+        "url": "https://bitpay.com",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "url": "https://support.bitpay.com/hc/en-us"
+        }
+      },
+      "availableChannel": [
+        {
+          "@type": "ServiceChannel",
+          "name": "Invoices API",
+          "serviceUrl": "https://bitpay.com/invoices",
+          "description": "Create and manage time-sensitive payment requests."
+        },
+        {
+          "@type": "ServiceChannel",
+          "name": "Bills API",
+          "serviceUrl": "https://bitpay.com/bills",
+          "description": "Manage payment requests sent to specific buyers."
+        },
+        {
+          "@type": "ServiceChannel",
+          "name": "Payouts API",
+          "serviceUrl": "https://bitpay.com/payouts",
+          "description": "Submit cryptocurrency withdrawal payments to recipients."
+        },
+        {
+          "@type": "ServiceChannel",
+          "name": "Settlements API",
+          "serviceUrl": "https://bitpay.com/settlements",
+          "description": "Access settlement transfer reports."
+        },
+        {
+          "@type": "ServiceChannel",
+          "name": "Rates API",
+          "serviceUrl": "https://bitpay.com/rates",
+          "description": "Retrieve cryptocurrency exchange rates."
+        },
+        {
+          "@type": "ServiceChannel",
+          "name": "Ledgers API",
+          "serviceUrl": "https://bitpay.com/ledgers",
+          "description": "Access account balance records by currency."
+        }
+      ],
+      "keywords": ["cryptocurrency", "payments", "bitcoin", "blockchain", "invoices", "payouts", "settlement"],
+      "category": "FinancialProduct"
+    }
+  ]
+}

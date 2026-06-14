@@ -1,0 +1,45 @@
+{
+  "summary": "Create a payout to a BitPay recipient",
+  "description": "Example request to create a cryptocurrency payout to an active BitPay recipient by email address.",
+  "request": {
+    "method": "POST",
+    "url": "https://bitpay.com/payouts",
+    "headers": {
+      "Content-Type": "application/json",
+      "X-Accept-Version": "2.0.0",
+      "X-Identity": "hexadecimal-public-key",
+      "X-Signature": "ecdsa-signature-of-url-and-body"
+    },
+    "body": {
+      "token": "your-payout-api-token",
+      "amount": 50.00,
+      "currency": "USD",
+      "ledgerCurrency": "BTC",
+      "reference": "payout-2026-001",
+      "label": "June Employee Payout",
+      "email": "employee@example.com",
+      "notificationURL": "https://yourdomain.com/webhooks/payouts",
+      "notificationEmail": "admin@yourdomain.com"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "data": {
+        "id": "JMwv8wQCXANoU2ZZQ9a9GH",
+        "amount": 50.00,
+        "currency": "USD",
+        "ledgerCurrency": "BTC",
+        "reference": "payout-2026-001",
+        "label": "June Employee Payout",
+        "email": "employee@example.com",
+        "status": "new",
+        "requestDate": "2026-06-13T10:00:00Z",
+        "notificationURL": "https://yourdomain.com/webhooks/payouts"
+      }
+    }
+  }
+}

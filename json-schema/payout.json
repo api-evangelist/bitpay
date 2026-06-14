@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bitpay/main/json-schema/payout.json",
+  "title": "BitPay Payout",
+  "description": "A cryptocurrency withdrawal payment submitted to an active BitPay recipient for customer payouts, marketplace disbursements, affiliate networks, or payroll processing.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "BitPay payout ID."
+    },
+    "amount": {
+      "type": "number",
+      "description": "The payout amount."
+    },
+    "currency": {
+      "type": "string",
+      "description": "The currency the payout is denominated in (ISO 4217 or crypto code).",
+      "pattern": "^[A-Z]{2,5}$"
+    },
+    "ledgerCurrency": {
+      "type": "string",
+      "description": "Ledger currency code set for the merchant account."
+    },
+    "reference": {
+      "type": "string",
+      "description": "Merchant-provided unique reference identifier."
+    },
+    "label": {
+      "type": "string",
+      "description": "Merchant-provided label for the payout."
+    },
+    "notificationURL": {
+      "type": "string",
+      "format": "uri",
+      "description": "Webhook URL for payout status notifications."
+    },
+    "notificationEmail": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address for payout notifications."
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address of the active payout recipient."
+    },
+    "recipientId": {
+      "type": "string",
+      "description": "BitPay recipient ID."
+    },
+    "shopperId": {
+      "type": "string",
+      "description": "Shopper ID when the payout is tied to a shopper."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["new", "funded", "processing", "complete", "failed", "cancelled", "paid", "unpaid"],
+      "description": "Current payout status."
+    },
+    "requestDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time the payout was requested."
+    },
+    "dateExecuted": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time the payout was executed."
+    },
+    "transactions": {
+      "type": "array",
+      "description": "Blockchain transaction records for this payout.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number",
+            "description": "Transaction amount."
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Transaction timestamp."
+          },
+          "txid": {
+            "type": "string",
+            "description": "Blockchain transaction ID."
+          }
+        }
+      }
+    }
+  },
+  "required": ["id", "amount", "currency", "ledgerCurrency", "status"],
+  "examples": [
+    {
+      "id": "JMwv8wQCXANoU2ZZQ9a9GH",
+      "amount": 10.00,
+      "currency": "USD",
+      "ledgerCurrency": "BTC",
+      "reference": "payout-ref-001",
+      "label": "Employee Payout",
+      "email": "recipient@example.com",
+      "status": "new",
+      "requestDate": "2026-06-13T10:00:00Z"
+    }
+  ]
+}

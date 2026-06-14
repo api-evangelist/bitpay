@@ -3,6 +3,7 @@ description: BitPay is a cryptocurrency payment processing platform offering RES
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/bitpay/refs/heads/main/apis.yml
 version: '0.19'
+modified: '2026-06-13'
 tags:
   - Cryptocurrency
   - Payments
@@ -25,7 +26,7 @@ apis:
       - type: Documentation
         url: https://developer.bitpay.com/reference/create-an-invoice
       - type: OpenAPI
-        url: https://developer.bitpay.com/llms.txt
+        url: https://raw.githubusercontent.com/api-evangelist/bitpay/refs/heads/main/openapi/openapi.yml
     contact:
       - FN: BitPay Support
         url: https://support.bitpay.com/hc/en-us

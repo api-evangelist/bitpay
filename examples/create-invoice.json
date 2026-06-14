@@ -1,0 +1,50 @@
+{
+  "summary": "Create an invoice for $10 USD purchase",
+  "description": "Example request to create a BitPay invoice for a fixed-price product purchase with webhook notification and redirect.",
+  "request": {
+    "method": "POST",
+    "url": "https://bitpay.com/invoices",
+    "headers": {
+      "Content-Type": "application/json",
+      "X-Accept-Version": "2.0.0"
+    },
+    "body": {
+      "token": "your-pos-api-token",
+      "price": 10.00,
+      "currency": "USD",
+      "orderId": "order-12345",
+      "itemDesc": "Premium Widget",
+      "notificationURL": "https://yourdomain.com/ipn/bitpay",
+      "redirectURL": "https://yourdomain.com/order/success",
+      "closeURL": "https://yourdomain.com/order/cancelled",
+      "autoRedirect": true,
+      "fullNotifications": true
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "data": {
+        "id": "Hpqc63wvE1ZjzeeH4kEycF",
+        "url": "https://bitpay.com/invoice?id=Hpqc63wvE1ZjzeeH4kEycF",
+        "status": "new",
+        "price": 10.00,
+        "currency": "USD",
+        "orderId": "order-12345",
+        "itemDesc": "Premium Widget",
+        "invoiceTime": 1718275200000,
+        "expirationTime": 1718276100000,
+        "currentTime": 1718275200000,
+        "btcPrice": "0.000249",
+        "btcDue": "0.000249",
+        "btcPaid": "0",
+        "rate": 40160.78,
+        "notificationURL": "https://yourdomain.com/ipn/bitpay",
+        "token": "8nPJSGgi7omxcbGGZ4KsSgqdi6juypBe9pVpSURDeAwx4VDNAg"
+      }
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bitpay/main/json-schema/invoice.json",
+  "title": "BitPay Invoice",
+  "description": "A time-sensitive payment request created on the BitPay platform with a fixed price in fiat currency and cryptocurrency equivalents locked at exchange rates expiring in 15 minutes.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "BitPay invoice ID."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the hosted invoice checkout page."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["new", "paid", "confirmed", "complete", "expired", "invalid"],
+      "description": "Current status of the invoice."
+    },
+    "price": {
+      "type": "number",
+      "description": "Invoice price in the specified currency."
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 3-character currency code for the invoice.",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "orderId": {
+      "type": "string",
+      "description": "Merchant internal order identifier."
+    },
+    "invoiceTime": {
+      "type": "integer",
+      "description": "Invoice creation timestamp in Unix milliseconds."
+    },
+    "expirationTime": {
+      "type": "integer",
+      "description": "Invoice expiration timestamp in Unix milliseconds."
+    },
+    "currentTime": {
+      "type": "integer",
+      "description": "Current server timestamp in Unix milliseconds."
+    },
+    "btcPrice": {
+      "type": "string",
+      "description": "BTC equivalent price locked at invoice creation."
+    },
+    "btcDue": {
+      "type": "string",
+      "description": "BTC amount still due."
+    },
+    "btcPaid": {
+      "type": "string",
+      "description": "BTC amount paid."
+    },
+    "rate": {
+      "type": "number",
+      "description": "BTC/fiat exchange rate at invoice creation."
+    },
+    "exceptionStatus": {
+      "type": "string",
+      "description": "Exception status for underpaid or overpaid invoices."
+    },
+    "token": {
+      "type": "string",
+      "description": "Invoice-specific token for status checks."
+    },
+    "itemDesc": {
+      "type": "string",
+      "description": "Invoice description displayed on the checkout page."
+    },
+    "posData": {
+      "type": "string",
+      "description": "Merchant passthru variable for correlating invoices with orders."
+    },
+    "guid": {
+      "type": "string",
+      "description": "Merchant passthru GUID for order lookup."
+    },
+    "notificationURL": {
+      "type": "string",
+      "format": "uri",
+      "description": "Webhook URL for invoice status notifications."
+    },
+    "buyer": {
+      "type": "object",
+      "description": "Buyer information.",
+      "properties": {
+        "name": { "type": "string" },
+        "address1": { "type": "string" },
+        "address2": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "zip": { "type": "string" },
+        "country": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "notify": { "type": "boolean" }
+      }
+    }
+  },
+  "required": ["id", "url", "status", "price", "currency"],
+  "examples": [
+    {
+      "id": "Hpqc63wvE1ZjzeeH4kEycF",
+      "url": "https://bitpay.com/invoice?id=Hpqc63wvE1ZjzeeH4kEycF",
+      "status": "new",
+      "price": 10.00,
+      "currency": "USD",
+      "orderId": "order-12345",
+      "invoiceTime": 1600000000000,
+      "expirationTime": 1600000900000,
+      "currentTime": 1600000000000,
+      "btcPrice": "0.000249",
+      "btcDue": "0.000249",
+      "btcPaid": "0",
+      "rate": 40160.78
+    }
+  ]
+}
