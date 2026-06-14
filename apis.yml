@@ -1,0 +1,158 @@
+name: BitPay
+description: BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/bitpay/refs/heads/main/apis.yml
+version: '0.19'
+tags:
+  - Cryptocurrency
+  - Payments
+  - Bitcoin
+  - Blockchain
+  - Invoices
+  - Payouts
+  - Settlement
+apis:
+  - name: BitPay Invoices API
+    description: Create and manage time-sensitive payment requests with fixed prices in fiat currency and cryptocurrency equivalents locked at exchange rates expiring in 15 minutes. Supports online checkout and point-of-sale payment flows.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.bitpay.com/reference/create-an-invoice
+    baseURL: https://bitpay.com
+    tags:
+      - Invoices
+      - Payments
+      - Cryptocurrency
+    properties:
+      - type: Documentation
+        url: https://developer.bitpay.com/reference/create-an-invoice
+      - type: OpenAPI
+        url: https://developer.bitpay.com/llms.txt
+    contact:
+      - FN: BitPay Support
+        url: https://support.bitpay.com/hc/en-us
+        email: ''
+  - name: BitPay Bills API
+    description: Manage payment requests sent to specific buyers with fixed-price line items typically denominated in fiat currency. Supports email billing and recurring payment scheduling via subscriptions.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.bitpay.com/docs
+    baseURL: https://bitpay.com
+    tags:
+      - Bills
+      - Billing
+      - Invoices
+    properties:
+      - type: Documentation
+        url: https://developer.bitpay.com/docs
+    contact:
+      - FN: BitPay Support
+        url: https://support.bitpay.com/hc/en-us
+        email: ''
+  - name: BitPay Payouts API
+    description: Submit cryptocurrency withdrawal payments to active BitPay recipients for customer payouts, marketplace disbursements, affiliate networks, and payroll processing.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.bitpay.com/docs
+    baseURL: https://bitpay.com
+    tags:
+      - Payouts
+      - Cryptocurrency
+      - Disbursements
+    properties:
+      - type: Documentation
+        url: https://developer.bitpay.com/docs
+    contact:
+      - FN: BitPay Support
+        url: https://support.bitpay.com/hc/en-us
+        email: ''
+  - name: BitPay Refunds API
+    description: Process full or partial refunds associated with invoices. Supports automatic handling of underpaid and overpaid amounts with cryptocurrency refund workflows.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.bitpay.com/docs
+    baseURL: https://bitpay.com
+    tags:
+      - Refunds
+      - Payments
+    properties:
+      - type: Documentation
+        url: https://developer.bitpay.com/docs
+    contact:
+      - FN: BitPay Support
+        url: https://support.bitpay.com/hc/en-us
+        email: ''
+  - name: BitPay Settlements API
+    description: Access transfer reports documenting payment profits settled from BitPay to merchant bank accounts and cryptocurrency wallets. Supports USD, EUR, GBP, CAD, AUD, NZD, MXN, and major cryptocurrencies.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.bitpay.com/docs
+    baseURL: https://bitpay.com
+    tags:
+      - Settlements
+      - Finance
+      - Reporting
+    properties:
+      - type: Documentation
+        url: https://developer.bitpay.com/docs
+    contact:
+      - FN: BitPay Support
+        url: https://support.bitpay.com/hc/en-us
+        email: ''
+  - name: BitPay Rates API
+    description: Retrieve exchange rate data representing fiat currency equivalents per cryptocurrency unit. Supports BTC, ETH, BCH, XRP, DOGE, and stablecoins against major fiat currencies.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.bitpay.com/docs
+    baseURL: https://bitpay.com
+    tags:
+      - Rates
+      - Exchange
+      - Cryptocurrency
+    properties:
+      - type: Documentation
+        url: https://developer.bitpay.com/docs
+    contact:
+      - FN: BitPay Support
+        url: https://support.bitpay.com/hc/en-us
+        email: ''
+  - name: BitPay Ledgers API
+    description: Access account balance records by currency and track individual ledger entries. Provides accounting data for merchant financial reconciliation.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.bitpay.com/docs
+    baseURL: https://bitpay.com
+    tags:
+      - Ledgers
+      - Finance
+      - Accounting
+    properties:
+      - type: Documentation
+        url: https://developer.bitpay.com/docs
+    contact:
+      - FN: BitPay Support
+        url: https://support.bitpay.com/hc/en-us
+        email: ''
+common:
+  - type: Authentication
+    url: https://developer.bitpay.com/docs/api-integrations-additional-information
+  - type: SDKs
+    url: https://developer.bitpay.com/docs
+  - type: Documentation
+    url: https://developer.bitpay.com/docs
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/bitpay/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: https://raw.githubusercontent.com/api-evangelist/bitpay/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/bitpay/refs/heads/main/finops/finops.yml
+  - type: Status
+    url: https://status.bitpay.com/
+  - type: TermsOfService
+    url: https://www.bitpay.com/legal/terms-of-use
+  - type: Support
+    url: https://support.bitpay.com/hc/en-us
+  - type: Webhooks
+    url: https://developer.bitpay.com/docs/api-integrations-additional-information
+  - type: GitHub
+    url: https://github.com/bitpay
+  - type: Signup
+    url: https://bitpay.com/dashboard/signup
+  - type: Blog
+    url: https://bitpay.com/blog
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    X-twitter: apievangelist

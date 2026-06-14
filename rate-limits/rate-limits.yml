@@ -1,0 +1,36 @@
+name: BitPay API Rate Limits
+description: BitPay does not publicly document explicit numeric rate limits for their REST API. The platform applies practical constraints through invoice expiration windows, session timeouts, and token-based access controls. Access is governed by merchant facade tokens with ECDSA-signed requests.
+provider: bitpay
+url: https://developer.bitpay.com/docs/api-integrations-additional-information
+rate_limits: []
+constraints:
+  - name: Invoice Price Lock Window
+    description: Cryptocurrency exchange rates are locked for 15 minutes after invoice creation. Invoices expire after this window if payment is not received.
+    value: 15
+    unit: minutes
+    scope: invoice
+  - name: API Session Timeout
+    description: API sessions expire after 15 minutes of inactivity. Sessions are an optional security feature protecting against replay attacks with request ordering guarantees.
+    value: 15
+    unit: minutes
+    scope: session
+  - name: Sandbox Environment
+    description: BitPay provides a test environment at test.bitpay.com for development and integration testing without processing real payments.
+    value: test.bitpay.com
+    unit: environment
+    scope: development
+authentication:
+  - type: Token-based (POS Facade)
+    description: No cryptographic signing required. Tokens created manually in the merchant dashboard. Suitable for point-of-sale integrations.
+    signing_required: false
+  - type: Token-based (Merchant Facade)
+    description: Requires ECDSA-signed requests using X-Identity and X-Signature headers. Required for full merchant API capabilities including payouts and settlements.
+    signing_required: true
+    headers:
+      - X-Accept-Version (required, value must be 2.0.0)
+      - X-Identity (ECDSA public key)
+      - X-Signature (ECDSA signature)
+notes:
+  - No publicly documented numeric rate limits per minute or per hour
+  - Rate limiting enforced at infrastructure level; contact BitPay for high-volume requirements
+  - Webhook (IPN) delivery expects HTTP 200 response from merchant endpoint

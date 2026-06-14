@@ -1,0 +1,63 @@
+name: BitPay FinOps
+description: Financial operations considerations for teams integrating the BitPay API. BitPay charges per-transaction fees based on monthly volume tiers with no subscription fees. All costs are pass-through payment processing fees — no separate API access fees.
+provider: bitpay
+url: https://bitpay.com/pricing
+cost_model: per_transaction
+subscription_fee: false
+free_tier: false
+cost_drivers:
+  - name: Transaction Fee (Standard)
+    description: Applied to merchants with monthly volume under $500,000 USD
+    rate: '2% + $0.25'
+    trigger: per processed payment
+    threshold_usd: 500000
+  - name: Transaction Fee (Growth)
+    description: Applied to merchants with monthly volume $500,000 to $999,999 USD
+    rate: '1.5% + $0.25'
+    trigger: per processed payment
+    threshold_usd: 999999
+  - name: Transaction Fee (Enterprise)
+    description: Applied to merchants with monthly volume $1,000,000+ USD
+    rate: '1% + $0.25'
+    trigger: per processed payment
+    threshold_usd: 1000000
+  - name: High-Risk Industry Surcharge
+    description: Additional fees may apply for merchants in high-risk industries as defined by BitPay
+    rate: variable
+    trigger: industry classification
+settlement:
+  description: BitPay settles merchant funds daily to bank accounts or cryptocurrency wallets
+  frequency: daily
+  supported_fiat:
+    - USD
+    - EUR
+    - GBP
+    - CAD
+    - AUD
+    - NZD
+    - MXN
+    - JPY
+  supported_crypto:
+    - BTC
+    - ETH
+    - BCH
+    - DOGE
+    - LTC
+    - XRP
+  supported_stablecoins:
+    - USDC
+    - USDT
+    - DAI
+    - GUSD
+    - BUSD
+    - PAX
+optimization_tips:
+  - Increase monthly transaction volume to qualify for lower per-transaction fee tiers
+  - Use the sandbox environment (test.bitpay.com) during development to avoid incurring live fees during testing
+  - Configure appropriate transactionSpeed (high/medium/low) to balance settlement risk and cost
+  - Choose settlement currency strategically to minimize downstream conversion fees
+  - BitPay eliminates fraud chargebacks — factor this savings into total cost of ownership comparisons with traditional card processing
+monitoring:
+  - Use Settlements API to track monthly volume and validate tier qualification
+  - Use Ledgers API for currency-level balance reconciliation
+  - Subscribe to status updates at status.bitpay.com for uptime monitoring

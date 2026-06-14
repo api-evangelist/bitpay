@@ -1,0 +1,52 @@
+name: BitPay Merchant Plans
+description: BitPay uses a volume-based tiered pricing structure for merchant payment processing. All plans include unlimited monthly transactions, daily fiat settlements, automatic payment exception handling, email billing tools, and ecommerce integrations. No monthly subscription fee — merchants pay only per-transaction fees.
+provider: bitpay
+url: https://bitpay.com/pricing
+plans:
+  - name: Standard
+    description: For merchants processing less than $500,000 USD per month in cryptocurrency payments. Includes all platform features with no monthly fee.
+    url: https://bitpay.com/pricing
+    free: false
+    pricing:
+      - per_transaction: '2% + $0.25'
+        unit: transaction
+        period: per transaction
+    features:
+      - Daily fiat settlements to bank account
+      - Unlimited monthly transactions
+      - Automatic payment exception handling
+      - Email billing tool
+      - Ecommerce plugins (Shopify, WooCommerce, Magento 2, BigCommerce)
+      - Donation buttons and hosted pages
+      - REST API access
+      - QuickBooks IIF download
+      - Fraud chargeback elimination
+      - iOS and Android checkout app
+      - Multi-currency settlement (USD, EUR, GBP, CAD, AUD, NZD, MXN, crypto, stablecoins)
+  - name: Growth
+    description: For merchants processing $500,000 to $999,999 USD per month in cryptocurrency payments.
+    url: https://bitpay.com/pricing
+    free: false
+    pricing:
+      - per_transaction: '1.5% + $0.25'
+        unit: transaction
+        period: per transaction
+    features:
+      - All Standard plan features
+      - Reduced per-transaction fee
+  - name: Enterprise
+    description: For merchants processing $1,000,000 USD or more per month in cryptocurrency payments. Lowest per-transaction rate available.
+    url: https://bitpay.com/pricing
+    free: false
+    pricing:
+      - per_transaction: '1% + $0.25'
+        unit: transaction
+        period: per transaction
+    features:
+      - All Growth plan features
+      - Lowest per-transaction fee
+      - Suitable for high-volume enterprise operations
+notes:
+  - Higher fees may apply for high-risk industries
+  - Pricing is based on cumulative monthly transaction volume
+  - No monthly subscription fees for any plan
