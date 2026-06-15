@@ -1,0 +1,14 @@
+{
+  "repo": "bitpay",
+  "feeds": [
+    {
+      "source": "https://bitpay.com/dashboard/signup",
+      "feed_url": "https://bitpay.com/dashboard/signup",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-06-14T20:42:17Z"
+}
