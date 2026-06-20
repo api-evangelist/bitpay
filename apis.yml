@@ -1,6 +1,6 @@
 name: BitPay
 description: BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/bitpay/refs/heads/main/apis.yml
 version: '0.19'
 modified: '2026-06-13'
@@ -15,7 +15,7 @@ tags:
 apis:
   - name: BitPay Invoices API
     description: Create and manage time-sensitive payment requests with fixed prices in fiat currency and cryptocurrency equivalents locked at exchange rates expiring in 15 minutes. Supports online checkout and point-of-sale payment flows.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.bitpay.com/reference/create-an-invoice
     baseURL: https://bitpay.com
     tags:
@@ -33,7 +33,7 @@ apis:
         email: ''
   - name: BitPay Bills API
     description: Manage payment requests sent to specific buyers with fixed-price line items typically denominated in fiat currency. Supports email billing and recurring payment scheduling via subscriptions.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.bitpay.com/docs
     baseURL: https://bitpay.com
     tags:
@@ -49,7 +49,7 @@ apis:
         email: ''
   - name: BitPay Payouts API
     description: Submit cryptocurrency withdrawal payments to active BitPay recipients for customer payouts, marketplace disbursements, affiliate networks, and payroll processing.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.bitpay.com/docs
     baseURL: https://bitpay.com
     tags:
@@ -65,7 +65,7 @@ apis:
         email: ''
   - name: BitPay Refunds API
     description: Process full or partial refunds associated with invoices. Supports automatic handling of underpaid and overpaid amounts with cryptocurrency refund workflows.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.bitpay.com/docs
     baseURL: https://bitpay.com
     tags:
@@ -80,7 +80,7 @@ apis:
         email: ''
   - name: BitPay Settlements API
     description: Access transfer reports documenting payment profits settled from BitPay to merchant bank accounts and cryptocurrency wallets. Supports USD, EUR, GBP, CAD, AUD, NZD, MXN, and major cryptocurrencies.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.bitpay.com/docs
     baseURL: https://bitpay.com
     tags:
@@ -96,7 +96,7 @@ apis:
         email: ''
   - name: BitPay Rates API
     description: Retrieve exchange rate data representing fiat currency equivalents per cryptocurrency unit. Supports BTC, ETH, BCH, XRP, DOGE, and stablecoins against major fiat currencies.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.bitpay.com/docs
     baseURL: https://bitpay.com
     tags:
@@ -112,7 +112,7 @@ apis:
         email: ''
   - name: BitPay Ledgers API
     description: Access account balance records by currency and track individual ledger entries. Provides accounting data for merchant financial reconciliation.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.bitpay.com/docs
     baseURL: https://bitpay.com
     tags:
