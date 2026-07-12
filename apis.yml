@@ -127,6 +127,8 @@ apis:
         url: https://support.bitpay.com/hc/en-us
         email: ''
 common:
+  - type: DomainSecurity
+    url: security/bitpay-domain-security.yml
   - type: Authentication
     url: https://developer.bitpay.com/docs/api-integrations-additional-information
   - type: SDKs
