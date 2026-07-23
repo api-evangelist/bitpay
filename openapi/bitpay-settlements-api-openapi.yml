@@ -1,0 +1,315 @@
+openapi: 3.1.0
+info:
+  title: BitPay Bills Settlements API
+  description: 'BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
+
+    '
+  version: 2.0.0
+  contact:
+    name: BitPay Support
+    url: https://support.bitpay.com/hc/en-us
+  termsOfService: https://www.bitpay.com/legal/terms-of-use
+servers:
+- url: https://bitpay.com
+  description: Production server
+- url: https://test.bitpay.com
+  description: Test server
+tags:
+- name: Settlements
+  description: Access transfer reports documenting payment profits settled from BitPay.
+paths:
+  /settlements:
+    get:
+      operationId: listSettlements
+      summary: List Settlements
+      description: 'Access transfer reports documenting payment profits settled from BitPay to merchant bank accounts and cryptocurrency wallets. Supports USD, EUR, GBP, CAD, AUD, NZD, MXN, and major cryptocurrencies.
+
+        '
+      tags:
+      - Settlements
+      parameters:
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: currency
+        in: query
+        schema:
+          type: string
+        description: Filter by settlement currency (ISO 4217 code).
+      - name: dateStart
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: dateEnd
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - new
+          - processing
+          - complete
+          - failed
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of settlements
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Settlement'
+  /settlements/{settlementId}:
+    get:
+      operationId: getSettlement
+      summary: Retrieve a Settlement
+      description: Retrieve a specific settlement report by its ID.
+      tags:
+      - Settlements
+      parameters:
+      - name: settlementId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Settlement details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettlementResponse'
+  /settlements/{settlementId}/reconciliationReport:
+    get:
+      operationId: getSettlementReconciliationReport
+      summary: Get Settlement Reconciliation Report
+      description: Retrieve a detailed reconciliation report for a specific settlement.
+      tags:
+      - Settlements
+      parameters:
+      - name: settlementId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Reconciliation report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReconciliationReport'
+components:
+  schemas:
+    ReconciliationReport:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            accountId:
+              type: string
+            currency:
+              type: string
+            payoutInfo:
+              type: object
+            openingDate:
+              type: string
+              format: date-time
+            closingDate:
+              type: string
+              format: date-time
+            openingBalance:
+              type: number
+            ledgerEntriesSum:
+              type: number
+            withHoldings:
+              type: array
+              items:
+                type: object
+            withHoldingsSum:
+              type: number
+            totalAmount:
+              type: number
+            ledgerEntries:
+              type: array
+              items:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  invoiceId:
+                    type: string
+                  description:
+                    type: string
+                  timestamp:
+                    type: string
+                    format: date-time
+                  amount:
+                    type: number
+                  id:
+                    type: string
+    SettlementResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Settlement'
+    Settlement:
+      type: object
+      properties:
+        id:
+          type: string
+          description: BitPay settlement ID.
+        accountId:
+          type: string
+        currency:
+          type: string
+        payoutInfo:
+          type: object
+          properties:
+            label:
+              type: string
+            bankCountry:
+              type: string
+            name:
+              type: string
+            bank:
+              type: string
+            swift:
+              type: string
+            address:
+              type: string
+            city:
+              type: string
+            postal:
+              type: string
+            sort:
+              type: string
+            wire:
+              type: boolean
+            bankName:
+              type: string
+            bankAddress:
+              type: string
+            bankCity:
+              type: string
+            bankPostal:
+              type: string
+            account:
+              type: string
+        status:
+          type: string
+          enum:
+          - new
+          - processing
+          - complete
+          - failed
+        dateCreated:
+          type: string
+          format: date-time
+        dateExecuted:
+          type: string
+          format: date-time
+        dateCompleted:
+          type: string
+          format: date-time
+        openingDate:
+          type: string
+          format: date-time
+        closingDate:
+          type: string
+          format: date-time
+        openingBalance:
+          type: number
+        ledgerEntriesSum:
+          type: number
+        withHoldings:
+          type: array
+          items:
+            type: object
+            properties:
+              amount:
+                type: number
+              code:
+                type: string
+              description:
+                type: string
+        withHoldingsSum:
+          type: number
+        totalAmount:
+          type: number
+        token:
+          type: string

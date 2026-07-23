@@ -1,0 +1,438 @@
+openapi: 3.1.0
+info:
+  title: BitPay Bills Invoices API
+  description: 'BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
+
+    '
+  version: 2.0.0
+  contact:
+    name: BitPay Support
+    url: https://support.bitpay.com/hc/en-us
+  termsOfService: https://www.bitpay.com/legal/terms-of-use
+servers:
+- url: https://bitpay.com
+  description: Production server
+- url: https://test.bitpay.com
+  description: Test server
+tags:
+- name: Invoices
+  description: Create and manage time-sensitive payment requests with fixed prices in fiat or cryptocurrency.
+paths:
+  /invoices:
+    post:
+      operationId: createInvoice
+      summary: Create an Invoice
+      description: 'Create a time-sensitive payment request with a fixed price in fiat currency and cryptocurrency equivalents locked at exchange rates expiring in 15 minutes. Supports online checkout and point-of-sale payment flows.
+
+        '
+      tags:
+      - Invoices
+      parameters:
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+        description: API version header. Must be set to 2.0.0.
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+        description: The hexadecimal public key generated from the client private key. Required for merchant facade.
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+        description: The ECDSA signature of the full request URL concatenated with the request body, signed with the client private key. Required for merchant facade.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInvoiceRequest'
+            example:
+              token: your-api-token
+              price: 10.0
+              currency: USD
+              orderId: order-12345
+              itemDesc: Example product
+              notificationURL: https://yourdomain.com/ipn
+              redirectURL: https://yourdomain.com/success
+      responses:
+        '200':
+          description: Invoice created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        '400':
+          description: Bad request - invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized - invalid or missing token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: listInvoices
+      summary: List Invoices
+      description: Retrieve a list of invoices filtered by date range and other criteria.
+      tags:
+      - Invoices
+      parameters:
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+        description: API token for merchant facade authentication.
+      - name: dateStart
+        in: query
+        schema:
+          type: string
+          format: date
+        description: Start date for filtering invoices (YYYY-MM-DD).
+      - name: dateEnd
+        in: query
+        schema:
+          type: string
+          format: date
+        description: End date for filtering invoices (YYYY-MM-DD).
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - new
+          - paid
+          - confirmed
+          - complete
+          - expired
+          - invalid
+        description: Filter by invoice status.
+      - name: orderId
+        in: query
+        schema:
+          type: string
+        description: Filter by merchant order ID.
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          maximum: 50
+        description: Maximum number of results to return.
+      - name: offset
+        in: query
+        schema:
+          type: integer
+        description: Number of results to skip for pagination.
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of invoices
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Invoice'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /invoices/{invoiceId}:
+    get:
+      operationId: getInvoice
+      summary: Retrieve an Invoice
+      description: Retrieve a specific invoice by its ID.
+      tags:
+      - Invoices
+      parameters:
+      - name: invoiceId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the invoice to retrieve.
+      - name: token
+        in: query
+        schema:
+          type: string
+        description: API token. Pass as URL parameter when fetching via merchant or pos facade.
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+        description: Required for merchant facade.
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+        description: Required for merchant facade.
+      responses:
+        '200':
+          description: Invoice details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        '404':
+          description: Invoice not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    InvoiceResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Invoice'
+    Buyer:
+      type: object
+      properties:
+        name:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        notify:
+          type: boolean
+    Invoice:
+      type: object
+      properties:
+        id:
+          type: string
+          description: BitPay invoice ID.
+        url:
+          type: string
+          format: uri
+          description: URL to the hosted invoice checkout page.
+        status:
+          type: string
+          enum:
+          - new
+          - paid
+          - confirmed
+          - complete
+          - expired
+          - invalid
+          description: Current status of the invoice.
+        price:
+          type: number
+          description: Invoice price in the specified currency.
+        currency:
+          type: string
+          description: Invoice currency code.
+        orderId:
+          type: string
+          description: Merchant order ID.
+        invoiceTime:
+          type: integer
+          description: Invoice creation timestamp (Unix milliseconds).
+        expirationTime:
+          type: integer
+          description: Invoice expiration timestamp (Unix milliseconds).
+        currentTime:
+          type: integer
+          description: Current server timestamp (Unix milliseconds).
+        btcPrice:
+          type: string
+          description: BTC equivalent price locked at creation.
+        btcDue:
+          type: string
+          description: BTC amount still due.
+        btcPaid:
+          type: string
+          description: BTC amount paid.
+        rate:
+          type: number
+          description: BTC/fiat exchange rate at invoice creation.
+        exceptionStatus:
+          type: string
+          description: Exception status for underpaid/overpaid invoices.
+        buyerFields:
+          $ref: '#/components/schemas/Buyer'
+        paymentUrls:
+          type: object
+          description: Payment protocol URLs for various wallets.
+        token:
+          type: string
+          description: Invoice-specific token for status checks.
+        itemDesc:
+          type: string
+        posData:
+          type: string
+        guid:
+          type: string
+        notificationURL:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        error:
+          type: string
+          description: Error code or type.
+        message:
+          type: string
+          description: Human-readable error message.
+        code:
+          type: integer
+          description: Numeric error code.
+    CreateInvoiceRequest:
+      type: object
+      required:
+      - token
+      - currency
+      properties:
+        token:
+          type: string
+          description: API token from the BitPay dashboard (pos facade) or Tokens resource (merchant facade).
+        price:
+          type: number
+          format: double
+          description: Fixed checkout amount in the invoice currency.
+        currency:
+          type: string
+          description: ISO 4217 3-character currency code for the invoice price.
+          example: USD
+        bitpayIdRequired:
+          type: boolean
+          description: Forces BitPay ID requirement at checkout.
+        merchantName:
+          type: string
+          description: Merchant display identifier shown to buyers.
+        forcedBuyerSelectedTransactionCurrency:
+          type: string
+          description: Preselected transaction currency for buyer.
+        forcedBuyerSelectedWallet:
+          type: string
+          description: Preselected wallet for buyer.
+        orderId:
+          type: string
+          description: Merchant internal order identifier.
+        itemDesc:
+          type: string
+          description: Invoice description displayed on the checkout page.
+        itemCode:
+          type: string
+          description: Item code. Use "bitcoindonation" for donation flows.
+        itemizedDetails:
+          type: array
+          description: Line item details for the invoice.
+          items:
+            type: object
+            properties:
+              amount:
+                type: number
+              description:
+                type: string
+              isFee:
+                type: boolean
+        notificationEmail:
+          type: string
+          format: email
+          description: Merchant email address for invoice status change notifications.
+        notificationURL:
+          type: string
+          format: uri
+          description: Webhook URL for invoice status notifications. Must be HTTPS.
+        redirectURL:
+          type: string
+          format: uri
+          description: URL to redirect buyer after payment is complete.
+        closeURL:
+          type: string
+          format: uri
+          description: URL to redirect buyer if the invoice is unpaid or closed.
+        autoRedirect:
+          type: boolean
+          description: Enable automatic redirect after payment.
+          default: false
+        posData:
+          type: string
+          description: Merchant passthru variable for correlating invoices with orders.
+        guid:
+          type: string
+          description: Merchant passthru GUID for order lookup.
+        transactionSpeed:
+          type: string
+          enum:
+          - high
+          - medium
+          - low
+          description: Transaction speed for risk mitigation purposes.
+        fullNotifications:
+          type: boolean
+          description: Send all standard notifications.
+          default: true
+        extendedNotifications:
+          type: boolean
+          description: Enable additional webhook notifications including expiration and refund events.
+        physical:
+          type: boolean
+          description: Indicates the invoice is for physical goods delivery.
+        buyerSms:
+          type: string
+          description: Buyer SMS phone number with country code.
+        buyer:
+          $ref: '#/components/schemas/Buyer'
+        jsonPayProRequired:
+          type: string
+          description: Enforce BitPay JSON Payment Protocol.
+        acceptanceWindow:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 900000
+          description: Payment window in milliseconds (0-900000).

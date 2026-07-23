@@ -1,0 +1,296 @@
+openapi: 3.1.0
+info:
+  title: BitPay Bills Refunds API
+  description: 'BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
+
+    '
+  version: 2.0.0
+  contact:
+    name: BitPay Support
+    url: https://support.bitpay.com/hc/en-us
+  termsOfService: https://www.bitpay.com/legal/terms-of-use
+servers:
+- url: https://bitpay.com
+  description: Production server
+- url: https://test.bitpay.com
+  description: Test server
+tags:
+- name: Refunds
+  description: Process full or partial refunds associated with invoices.
+paths:
+  /invoices/{invoiceId}/refunds:
+    post:
+      operationId: createRefund
+      summary: Create a Refund
+      description: 'Create a refund for a paid invoice. Supports full or partial refunds. Handles automatic processing of underpaid and overpaid amounts with cryptocurrency refund workflows.
+
+        '
+      tags:
+      - Refunds
+      parameters:
+      - name: invoiceId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the invoice to refund.
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRefundRequest'
+      responses:
+        '200':
+          description: Refund created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefundResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: listRefunds
+      summary: List Refunds for an Invoice
+      description: Retrieve all refunds associated with a specific invoice.
+      tags:
+      - Refunds
+      parameters:
+      - name: invoiceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of refunds
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Refund'
+  /invoices/{invoiceId}/refunds/{refundId}:
+    get:
+      operationId: getRefund
+      summary: Retrieve a Refund
+      description: Retrieve a specific refund by its ID.
+      tags:
+      - Refunds
+      parameters:
+      - name: invoiceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: refundId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Refund details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefundResponse'
+    delete:
+      operationId: cancelRefund
+      summary: Cancel a Refund
+      description: Cancel a refund request that has not yet been processed.
+      tags:
+      - Refunds
+      parameters:
+      - name: invoiceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: refundId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Refund cancelled
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: boolean
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        error:
+          type: string
+          description: Error code or type.
+        message:
+          type: string
+          description: Human-readable error message.
+        code:
+          type: integer
+          description: Numeric error code.
+    CreateRefundRequest:
+      type: object
+      required:
+      - token
+      - invoiceId
+      - amount
+      - currency
+      properties:
+        token:
+          type: string
+          description: API token for authentication.
+        invoiceId:
+          type: string
+          description: The ID of the invoice to refund.
+        amount:
+          type: number
+          description: Amount to refund.
+        currency:
+          type: string
+          description: Currency of the refund amount.
+        preview:
+          type: boolean
+          description: If true, returns a preview of the refund without executing it.
+        immediate:
+          type: boolean
+          description: If true, process the refund immediately.
+        buyerPaysRefundFee:
+          type: boolean
+          description: If true, the refund fee is deducted from the refund amount.
+        reference:
+          type: string
+          description: Merchant-provided reference for the refund.
+    RefundResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Refund'
+    Refund:
+      type: object
+      properties:
+        id:
+          type: string
+          description: BitPay refund ID.
+        invoiceId:
+          type: string
+        status:
+          type: string
+          enum:
+          - created
+          - pending
+          - cancelled
+          - manual
+          - immediate
+          - failed
+          - complete
+        amount:
+          type: number
+        currency:
+          type: string
+        lastRefundNotification:
+          type: string
+          format: date-time
+        refundFee:
+          type: number
+        immediate:
+          type: boolean
+        buyerPaysRefundFee:
+          type: boolean
+        reference:
+          type: string
+        requestDate:
+          type: string
+          format: date-time

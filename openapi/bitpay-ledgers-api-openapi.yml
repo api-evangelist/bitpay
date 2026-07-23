@@ -1,0 +1,205 @@
+openapi: 3.1.0
+info:
+  title: BitPay Bills Ledgers API
+  description: 'BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
+
+    '
+  version: 2.0.0
+  contact:
+    name: BitPay Support
+    url: https://support.bitpay.com/hc/en-us
+  termsOfService: https://www.bitpay.com/legal/terms-of-use
+servers:
+- url: https://bitpay.com
+  description: Production server
+- url: https://test.bitpay.com
+  description: Test server
+tags:
+- name: Ledgers
+  description: Access account balance records by currency and track individual ledger entries.
+paths:
+  /ledgers:
+    get:
+      operationId: listLedgers
+      summary: List Ledgers
+      description: 'Access account balance records by currency. Provides accounting data for merchant financial reconciliation.
+
+        '
+      tags:
+      - Ledgers
+      parameters:
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of ledgers with balances
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Ledger'
+  /ledgers/{currency}:
+    get:
+      operationId: getLedgerEntries
+      summary: Get Ledger Entries
+      description: 'Retrieve individual ledger entries for a specific currency. Track individual transactions for merchant financial reconciliation.
+
+        '
+      tags:
+      - Ledgers
+      parameters:
+      - name: currency
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ISO 4217 currency code or cryptocurrency code.
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: startDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: endDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Ledger entries for the specified currency
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LedgerEntry'
+components:
+  schemas:
+    LedgerEntry:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of ledger entry.
+        amount:
+          type: number
+          description: Transaction amount.
+        code:
+          type: integer
+          description: Transaction code.
+        description:
+          type: string
+          description: Transaction description.
+        timestamp:
+          type: string
+          format: date-time
+          description: Transaction timestamp.
+        txType:
+          type: string
+          description: Transaction type identifier.
+        scale:
+          type: integer
+          description: Scale for decimal precision.
+        invoiceId:
+          type: string
+          description: Associated invoice ID, if applicable.
+        buyerFields:
+          $ref: '#/components/schemas/Buyer'
+        invoiceAmount:
+          type: number
+          description: Original invoice amount.
+        invoiceCurrency:
+          type: string
+          description: Original invoice currency.
+        transactionCurrency:
+          type: string
+          description: Currency in which the transaction was settled.
+        id:
+          type: string
+          description: Unique ledger entry ID.
+    Ledger:
+      type: object
+      properties:
+        currency:
+          type: string
+          description: Currency code for this ledger.
+        balance:
+          type: number
+          description: Current balance in this currency.
+    Buyer:
+      type: object
+      properties:
+        name:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        notify:
+          type: boolean

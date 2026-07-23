@@ -1,0 +1,412 @@
+openapi: 3.1.0
+info:
+  title: BitPay Bills API
+  description: 'BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
+
+    '
+  version: 2.0.0
+  contact:
+    name: BitPay Support
+    url: https://support.bitpay.com/hc/en-us
+  termsOfService: https://www.bitpay.com/legal/terms-of-use
+servers:
+- url: https://bitpay.com
+  description: Production server
+- url: https://test.bitpay.com
+  description: Test server
+tags:
+- name: Bills
+  description: Manage payment requests sent to specific buyers with fixed-price line items.
+paths:
+  /bills:
+    post:
+      operationId: createBill
+      summary: Create a Bill
+      description: 'Create a payment request sent to a specific buyer with fixed-price line items typically denominated in fiat currency. Supports email billing and recurring payment scheduling via subscriptions.
+
+        '
+      tags:
+      - Bills
+      parameters:
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBillRequest'
+            example:
+              token: your-api-token
+              currency: USD
+              name: John Doe
+              email: john@example.com
+              dueDate: '2026-07-01T00:00:00Z'
+              items:
+              - description: Consulting services
+                price: 150.0
+                quantity: 2
+      responses:
+        '200':
+          description: Bill created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: listBills
+      summary: List Bills
+      description: Retrieve a list of bills, optionally filtered by status.
+      tags:
+      - Bills
+      parameters:
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+        description: API token for authentication.
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - draft
+          - sent
+          - new
+          - paid
+          - acknowledged
+          - refunded
+          - cancelled
+          - unpaid
+          - sentAndPaid
+        description: Filter by bill status.
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of bills
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Bill'
+  /bills/{billId}:
+    get:
+      operationId: getBill
+      summary: Retrieve a Bill
+      description: Retrieve a specific bill by its ID.
+      tags:
+      - Bills
+      parameters:
+      - name: billId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the bill to retrieve.
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Bill details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillResponse'
+        '404':
+          description: Bill not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: updateBill
+      summary: Update a Bill
+      description: Update an existing bill. Bills can be updated only if they have not been paid.
+      tags:
+      - Bills
+      parameters:
+      - name: billId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBillRequest'
+      responses:
+        '200':
+          description: Bill updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillResponse'
+  /bills/{billId}/deliveries:
+    post:
+      operationId: deliverBill
+      summary: Deliver a Bill
+      description: Trigger email delivery of a bill to the recipient.
+      tags:
+      - Bills
+      parameters:
+      - name: billId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - token
+              properties:
+                token:
+                  type: string
+                  description: API token for authentication.
+      responses:
+        '200':
+          description: Bill delivered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+                    example: success
+components:
+  schemas:
+    BillItem:
+      type: object
+      required:
+      - price
+      - quantity
+      properties:
+        description:
+          type: string
+          description: Description of the line item.
+        price:
+          type: number
+          description: Unit price of the item.
+        quantity:
+          type: integer
+          description: Quantity of the item.
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        error:
+          type: string
+          description: Error code or type.
+        message:
+          type: string
+          description: Human-readable error message.
+        code:
+          type: integer
+          description: Numeric error code.
+    BillResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Bill'
+    Bill:
+      type: object
+      properties:
+        id:
+          type: string
+          description: BitPay bill ID.
+        status:
+          type: string
+          enum:
+          - draft
+          - sent
+          - new
+          - paid
+          - acknowledged
+          - refunded
+          - cancelled
+          - unpaid
+          - sentAndPaid
+        url:
+          type: string
+          format: uri
+        number:
+          type: string
+        currency:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        dueDate:
+          type: string
+          format: date-time
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillItem'
+        token:
+          type: string
+        merchant:
+          type: string
+    CreateBillRequest:
+      type: object
+      required:
+      - token
+      - currency
+      - items
+      properties:
+        token:
+          type: string
+          description: API token from the BitPay dashboard.
+        number:
+          type: string
+          description: Bill identifier specified by the merchant.
+        currency:
+          type: string
+          description: ISO 4217 3-character currency code.
+        name:
+          type: string
+          description: Bill recipient's name.
+        address1:
+          type: string
+          description: Bill recipient's street address.
+        address2:
+          type: string
+          description: Additional address line.
+        city:
+          type: string
+          description: Bill recipient's city.
+        state:
+          type: string
+          description: Bill recipient's state or province.
+        zip:
+          type: string
+          description: Bill recipient's ZIP or postal code.
+        country:
+          type: string
+          description: Bill recipient's country.
+        email:
+          type: string
+          format: email
+          description: Bill recipient's email address.
+        cc:
+          type: array
+          items:
+            type: string
+            format: email
+          description: Email addresses to CC on the bill.
+        phone:
+          type: string
+          description: Bill recipient's phone number.
+        dueDate:
+          type: string
+          format: date-time
+          description: Date and time at which the bill is due (ISO-8601).
+        passProcessingFee:
+          type: boolean
+          description: If true, BitPay's processing fee will be included in the bill.
+        items:
+          type: array
+          description: List of line items on the bill.
+          items:
+            $ref: '#/components/schemas/BillItem'

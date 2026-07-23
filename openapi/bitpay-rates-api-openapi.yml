@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: BitPay Bills Rates API
+  description: 'BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
+
+    '
+  version: 2.0.0
+  contact:
+    name: BitPay Support
+    url: https://support.bitpay.com/hc/en-us
+  termsOfService: https://www.bitpay.com/legal/terms-of-use
+servers:
+- url: https://bitpay.com
+  description: Production server
+- url: https://test.bitpay.com
+  description: Test server
+tags:
+- name: Rates
+  description: Retrieve exchange rate data representing fiat currency equivalents per cryptocurrency unit.
+paths:
+  /rates:
+    get:
+      operationId: getRates
+      summary: Get Exchange Rates
+      description: 'Retrieve exchange rate data representing fiat currency equivalents per cryptocurrency unit. Returns rates for all supported cryptocurrency and fiat currency pairs.
+
+        '
+      tags:
+      - Rates
+      responses:
+        '200':
+          description: Exchange rates data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Rate'
+  /rates/{baseCurrency}:
+    get:
+      operationId: getRatesForCurrency
+      summary: Get Exchange Rates for a Base Currency
+      description: 'Retrieve exchange rates for a specific base cryptocurrency against all supported fiat currencies.
+
+        '
+      tags:
+      - Rates
+      parameters:
+      - name: baseCurrency
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - BTC
+          - ETH
+          - BCH
+          - XRP
+          - DOGE
+          - LTC
+          - USDC
+        description: The base cryptocurrency code (e.g., BTC, ETH).
+      responses:
+        '200':
+          description: Exchange rates for the specified currency
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Rate'
+  /rates/{baseCurrency}/{quoteCurrency}:
+    get:
+      operationId: getRate
+      summary: Get Exchange Rate for Currency Pair
+      description: 'Retrieve the exchange rate for a specific cryptocurrency/fiat currency pair.
+
+        '
+      tags:
+      - Rates
+      parameters:
+      - name: baseCurrency
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The base cryptocurrency code (e.g., BTC).
+      - name: quoteCurrency
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The quote fiat currency code (e.g., USD).
+      responses:
+        '200':
+          description: Exchange rate for the specified pair
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Rate'
+components:
+  schemas:
+    Rate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Full name of the currency (e.g., "US Dollar").
+        code:
+          type: string
+          description: Currency code (e.g., "USD").
+        rate:
+          type: number
+          description: Exchange rate (fiat units per one cryptocurrency unit).

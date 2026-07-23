@@ -1,0 +1,357 @@
+openapi: 3.1.0
+info:
+  title: BitPay Bills Payouts API
+  description: 'BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
+
+    '
+  version: 2.0.0
+  contact:
+    name: BitPay Support
+    url: https://support.bitpay.com/hc/en-us
+  termsOfService: https://www.bitpay.com/legal/terms-of-use
+servers:
+- url: https://bitpay.com
+  description: Production server
+- url: https://test.bitpay.com
+  description: Test server
+tags:
+- name: Payouts
+  description: Submit cryptocurrency withdrawal payments to active BitPay recipients.
+paths:
+  /payouts:
+    post:
+      operationId: createPayout
+      summary: Create a Payout
+      description: 'Submit a cryptocurrency withdrawal payment to an active BitPay recipient for customer payouts, marketplace disbursements, affiliate networks, or payroll processing.
+
+        '
+      tags:
+      - Payouts
+      parameters:
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePayoutRequest'
+      responses:
+        '200':
+          description: Payout created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: listPayouts
+      summary: List Payouts
+      description: Retrieve a list of payouts, optionally filtered by date range and status.
+      tags:
+      - Payouts
+      parameters:
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: startDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: endDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - new
+          - funded
+          - processing
+          - complete
+          - failed
+          - cancelled
+          - paid
+          - unpaid
+      - name: reference
+        in: query
+        schema:
+          type: string
+        description: Filter by merchant reference ID.
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of payouts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Payout'
+  /payouts/{payoutId}:
+    get:
+      operationId: getPayout
+      summary: Retrieve a Payout
+      description: Retrieve a specific payout by its ID.
+      tags:
+      - Payouts
+      parameters:
+      - name: payoutId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Payout details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutResponse'
+        '404':
+          description: Payout not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: cancelPayout
+      summary: Cancel a Payout
+      description: Cancel a payout that has not yet been processed.
+      tags:
+      - Payouts
+      parameters:
+      - name: payoutId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: X-Accept-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - 2.0.0
+      - name: X-Identity
+        in: header
+        schema:
+          type: string
+      - name: X-Signature
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Payout cancelled successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: boolean
+components:
+  schemas:
+    Payout:
+      type: object
+      properties:
+        id:
+          type: string
+          description: BitPay payout ID.
+        amount:
+          type: number
+        currency:
+          type: string
+        ledgerCurrency:
+          type: string
+        reference:
+          type: string
+        label:
+          type: string
+        notificationURL:
+          type: string
+        notificationEmail:
+          type: string
+        email:
+          type: string
+        recipientId:
+          type: string
+        shopperId:
+          type: string
+        status:
+          type: string
+          enum:
+          - new
+          - funded
+          - processing
+          - complete
+          - failed
+          - cancelled
+          - paid
+          - unpaid
+        requestDate:
+          type: string
+          format: date-time
+        dateExecuted:
+          type: string
+          format: date-time
+        transactions:
+          type: array
+          items:
+            type: object
+            properties:
+              amount:
+                type: number
+              date:
+                type: string
+                format: date-time
+              txid:
+                type: string
+    CreatePayoutRequest:
+      type: object
+      required:
+      - token
+      - amount
+      - currency
+      - ledgerCurrency
+      properties:
+        token:
+          type: string
+          description: API token with payout facade permissions.
+        amount:
+          type: number
+          description: The amount of the payout request.
+        currency:
+          type: string
+          description: The currency the payout request is denominated in (ISO 4217).
+        ledgerCurrency:
+          type: string
+          description: Ledger currency code set for the account (e.g., USD, BTC).
+        reference:
+          type: string
+          description: Merchant-provided unique reference identifier for the payout.
+        notificationURL:
+          type: string
+          format: uri
+          description: Webhook URL for payout status notifications.
+        notificationEmail:
+          type: string
+          format: email
+          description: Email for payout notification.
+        email:
+          type: string
+          format: email
+          description: The email address of an active recipient.
+        recipientId:
+          type: string
+          description: BitPay recipient ID.
+        shopperId:
+          type: string
+          description: This field is used when the payout is tied to a shopper.
+        label:
+          type: string
+          description: Merchant-provided label for the payout request.
+        message:
+          type: string
+          description: Optional merchant message to include with the payout.
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        error:
+          type: string
+          description: Error code or type.
+        message:
+          type: string
+          description: Human-readable error message.
+        code:
+          type: integer
+          description: Numeric error code.
+    PayoutResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Payout'
