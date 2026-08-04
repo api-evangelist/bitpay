@@ -1,0 +1,26 @@
+{
+  "provider": "bitpay",
+  "sources": [
+    "bitpay-bills-api-openapi.yml",
+    "bitpay-invoices-api-openapi.yml",
+    "bitpay-ledgers-api-openapi.yml",
+    "bitpay-payouts-api-openapi.yml",
+    "bitpay-rates-api-openapi.yml",
+    "bitpay-refunds-api-openapi.yml",
+    "bitpay-settlements-api-openapi.yml"
+  ],
+  "outputs": [
+    "bitpay-bills-api-openapi.yml",
+    "bitpay-invoices-api-openapi.yml",
+    "bitpay-ledgers-api-openapi.yml",
+    "bitpay-payouts-api-openapi.yml",
+    "bitpay-rates-api-openapi.yml",
+    "bitpay-refunds-api-openapi.yml",
+    "bitpay-settlements-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
