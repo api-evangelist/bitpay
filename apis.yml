@@ -1,5 +1,6 @@
 name: BitPay
 description: BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
+specificationVersion: '0.23'
 accessModel:
   pricing: paid
   onboarding: unknown
