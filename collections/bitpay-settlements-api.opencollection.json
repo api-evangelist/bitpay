@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BitPay Bills Settlements API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Settlements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Settlements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bitpay.com/settlements",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Filter by settlement currency (ISO 4217 code)."
+              },
+              {
+                "name": "dateStart",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dateEnd",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Access transfer reports documenting payment profits settled from BitPay to merchant bank accounts and cryptocurrency wallets. Supports USD, EUR, GBP, CAD, AUD, NZD, MXN, and major cryptocurrencies.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve a Settlement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bitpay.com/settlements/:settlementId",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "settlementId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific settlement report by its ID."
+        },
+        {
+          "info": {
+            "name": "Get Settlement Reconciliation Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bitpay.com/settlements/:settlementId/reconciliationReport",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "settlementId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a detailed reconciliation report for a specific settlement."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

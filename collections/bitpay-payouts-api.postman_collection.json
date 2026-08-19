@@ -1,0 +1,793 @@
+{
+  "item": [
+    {
+      "id": "90e9abef-7861-4831-8bba-84af1d51fb98",
+      "name": "Payouts",
+      "description": {
+        "content": "Submit cryptocurrency withdrawal payments to active BitPay recipients.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3c4c5fef-0c54-4d7b-bded-9efd039b814a",
+          "name": "Create a Payout",
+          "request": {
+            "name": "Create a Payout",
+            "description": {
+              "content": "Submit a cryptocurrency withdrawal payment to an active BitPay recipient for customer payouts, marketplace disbursements, affiliate networks, or payroll processing.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"ledgerCurrency\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"notificationURL\": \"<uri>\",\n  \"notificationEmail\": \"<email>\",\n  \"email\": \"<email>\",\n  \"recipientId\": \"<string>\",\n  \"shopperId\": \"<string>\",\n  \"label\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "10f5da7a-59f4-44f2-bdc2-b64214606d6a",
+              "name": "Payout created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"ledgerCurrency\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"notificationURL\": \"<uri>\",\n  \"notificationEmail\": \"<email>\",\n  \"email\": \"<email>\",\n  \"recipientId\": \"<string>\",\n  \"shopperId\": \"<string>\",\n  \"label\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"amount\": 304.9729623257569,\n    \"currency\": \"string\",\n    \"ledgerCurrency\": \"string\",\n    \"reference\": \"string\",\n    \"label\": \"string\",\n    \"notificationURL\": \"string\",\n    \"notificationEmail\": \"string\",\n    \"email\": \"string\",\n    \"recipientId\": \"string\",\n    \"shopperId\": \"string\",\n    \"status\": \"processing\",\n    \"requestDate\": \"1996-06-28T01:15:24.127Z\",\n    \"dateExecuted\": \"1950-12-10T09:18:35.301Z\",\n    \"transactions\": [\n      {\n        \"amount\": 1969.4983956467504,\n        \"date\": \"2008-07-22T22:17:46.756Z\",\n        \"txid\": \"string\"\n      },\n      {\n        \"amount\": 6026.057258413895,\n        \"date\": \"2026-01-09T10:50:26.745Z\",\n        \"txid\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ab1a0bd-0440-4938-b256-ef47f88e982e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"ledgerCurrency\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"notificationURL\": \"<uri>\",\n  \"notificationEmail\": \"<email>\",\n  \"email\": \"<email>\",\n  \"recipientId\": \"<string>\",\n  \"shopperId\": \"<string>\",\n  \"label\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 5473\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3fb74b3-c673-4ee1-a553-ee54ea8bf485",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"ledgerCurrency\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"notificationURL\": \"<uri>\",\n  \"notificationEmail\": \"<email>\",\n  \"email\": \"<email>\",\n  \"recipientId\": \"<string>\",\n  \"shopperId\": \"<string>\",\n  \"label\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 5473\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c351eaf-c9ba-45aa-a9d7-c0d131acafe9",
+          "name": "List Payouts",
+          "request": {
+            "name": "List Payouts",
+            "description": {
+              "content": "Retrieve a list of payouts, optionally filtered by date range and status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "reference",
+                  "value": "<string>",
+                  "description": "Filter by merchant reference ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4afb8108-b5af-4611-95da-8c01693ed447",
+              "name": "List of payouts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reference",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"amount\": 1707.2747036915437,\n      \"currency\": \"string\",\n      \"ledgerCurrency\": \"string\",\n      \"reference\": \"string\",\n      \"label\": \"string\",\n      \"notificationURL\": \"string\",\n      \"notificationEmail\": \"string\",\n      \"email\": \"string\",\n      \"recipientId\": \"string\",\n      \"shopperId\": \"string\",\n      \"status\": \"paid\",\n      \"requestDate\": \"2000-07-06T19:30:43.766Z\",\n      \"dateExecuted\": \"1984-12-28T23:29:22.927Z\",\n      \"transactions\": [\n        {\n          \"amount\": 4073.7404998147617,\n          \"date\": \"1986-11-28T11:59:08.589Z\",\n          \"txid\": \"string\"\n        },\n        {\n          \"amount\": 5406.271910220781,\n          \"date\": \"2022-12-30T02:25:03.192Z\",\n          \"txid\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"amount\": 3303.069559095242,\n      \"currency\": \"string\",\n      \"ledgerCurrency\": \"string\",\n      \"reference\": \"string\",\n      \"label\": \"string\",\n      \"notificationURL\": \"string\",\n      \"notificationEmail\": \"string\",\n      \"email\": \"string\",\n      \"recipientId\": \"string\",\n      \"shopperId\": \"string\",\n      \"status\": \"failed\",\n      \"requestDate\": \"1976-10-11T14:03:48.078Z\",\n      \"dateExecuted\": \"1985-05-21T08:22:21.118Z\",\n      \"transactions\": [\n        {\n          \"amount\": 4585.965718552982,\n          \"date\": \"2000-08-20T06:40:27.042Z\",\n          \"txid\": \"string\"\n        },\n        {\n          \"amount\": 7555.223974184332,\n          \"date\": \"1976-05-29T06:37:44.753Z\",\n          \"txid\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd7b857c-fa50-455a-b1db-5834b75cda8a",
+          "name": "Retrieve a Payout",
+          "request": {
+            "name": "Retrieve a Payout",
+            "description": {
+              "content": "Retrieve a specific payout by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payouts",
+                ":payoutId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payoutId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db220241-66b1-48ac-b68c-5237d89aa24b",
+              "name": "Payout details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    ":payoutId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payoutId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"amount\": 304.9729623257569,\n    \"currency\": \"string\",\n    \"ledgerCurrency\": \"string\",\n    \"reference\": \"string\",\n    \"label\": \"string\",\n    \"notificationURL\": \"string\",\n    \"notificationEmail\": \"string\",\n    \"email\": \"string\",\n    \"recipientId\": \"string\",\n    \"shopperId\": \"string\",\n    \"status\": \"processing\",\n    \"requestDate\": \"1996-06-28T01:15:24.127Z\",\n    \"dateExecuted\": \"1950-12-10T09:18:35.301Z\",\n    \"transactions\": [\n      {\n        \"amount\": 1969.4983956467504,\n        \"date\": \"2008-07-22T22:17:46.756Z\",\n        \"txid\": \"string\"\n      },\n      {\n        \"amount\": 6026.057258413895,\n        \"date\": \"2026-01-09T10:50:26.745Z\",\n        \"txid\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2238073d-f948-42c2-9b2c-010b5ba9b7c5",
+              "name": "Payout not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    ":payoutId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payoutId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 5473\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "171c6803-eb14-46f1-b867-94330875e698",
+          "name": "Cancel a Payout",
+          "request": {
+            "name": "Cancel a Payout",
+            "description": {
+              "content": "Cancel a payout that has not yet been processed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payouts",
+                ":payoutId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payoutId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "81a17818-7596-4985-a2c5-d4a100f6d062",
+              "name": "Payout cancelled successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    ":payoutId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payoutId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://bitpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6929a1fb-4981-4cf0-a950-05db147b18ef",
+    "name": "BitPay Bills Payouts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.\n\n\nContact Support:\n Name: BitPay Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BitPay Bills Ledgers API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ledgers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Ledgers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bitpay.com/ledgers",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Access account balance records by currency. Provides accounting data for merchant financial reconciliation.\n"
+        },
+        {
+          "info": {
+            "name": "Get Ledger Entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bitpay.com/ledgers/:currency",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "currency",
+                "value": "",
+                "type": "path",
+                "description": "ISO 4217 currency code or cryptocurrency code."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve individual ledger entries for a specific currency. Track individual transactions for merchant financial reconciliation.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

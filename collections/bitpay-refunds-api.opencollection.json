@@ -1,0 +1,176 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BitPay Bills Refunds API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Refunds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Refunds for an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bitpay.com/invoices/:invoiceId/refunds",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve all refunds associated with a specific invoice."
+        },
+        {
+          "info": {
+            "name": "Create a Refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bitpay.com/invoices/:invoiceId/refunds",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the invoice to refund."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a refund for a paid invoice. Supports full or partial refunds. Handles automatic processing of underpaid and overpaid amounts with cryptocurrency refund workflows.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve a Refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bitpay.com/invoices/:invoiceId/refunds/:refundId",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "refundId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific refund by its ID."
+        },
+        {
+          "info": {
+            "name": "Cancel a Refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://bitpay.com/invoices/:invoiceId/refunds/:refundId",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "refundId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Cancel a refund request that has not yet been processed."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

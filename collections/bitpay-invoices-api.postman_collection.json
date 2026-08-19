@@ -1,0 +1,744 @@
+{
+  "item": [
+    {
+      "id": "0aa61a9b-d38e-4f6b-b9b0-92c659a0f147",
+      "name": "Invoices",
+      "description": {
+        "content": "Create and manage time-sensitive payment requests with fixed prices in fiat or cryptocurrency.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d03e2c5a-b0cb-4c88-bb47-327a58edbae4",
+          "name": "Create an Invoice",
+          "request": {
+            "name": "Create an Invoice",
+            "description": {
+              "content": "Create a time-sensitive payment request with a fixed price in fiat currency and cryptocurrency equivalents locked at exchange rates expiring in 15 minutes. Supports online checkout and point-of-sale payment flows.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Must be set to 2.0.0.",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The hexadecimal public key generated from the client private key. Required for merchant facade.",
+                "key": "X-Identity",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ECDSA signature of the full request URL concatenated with the request body, signed with the client private key. Required for merchant facade.",
+                "key": "X-Signature",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"price\": \"<double>\",\n  \"bitpayIdRequired\": \"<boolean>\",\n  \"merchantName\": \"<string>\",\n  \"forcedBuyerSelectedTransactionCurrency\": \"<string>\",\n  \"forcedBuyerSelectedWallet\": \"<string>\",\n  \"orderId\": \"<string>\",\n  \"itemDesc\": \"<string>\",\n  \"itemCode\": \"<string>\",\n  \"itemizedDetails\": [\n    {\n      \"amount\": \"<number>\",\n      \"description\": \"<string>\",\n      \"isFee\": \"<boolean>\"\n    },\n    {\n      \"amount\": \"<number>\",\n      \"description\": \"<string>\",\n      \"isFee\": \"<boolean>\"\n    }\n  ],\n  \"notificationEmail\": \"<email>\",\n  \"notificationURL\": \"<uri>\",\n  \"redirectURL\": \"<uri>\",\n  \"closeURL\": \"<uri>\",\n  \"autoRedirect\": false,\n  \"posData\": \"<string>\",\n  \"guid\": \"<string>\",\n  \"transactionSpeed\": \"<string>\",\n  \"fullNotifications\": true,\n  \"extendedNotifications\": \"<boolean>\",\n  \"physical\": \"<boolean>\",\n  \"buyerSms\": \"<string>\",\n  \"buyer\": {\n    \"name\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<email>\",\n    \"phone\": \"<string>\",\n    \"notify\": \"<boolean>\"\n  },\n  \"jsonPayProRequired\": \"<string>\",\n  \"acceptanceWindow\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "86c2979c-078e-4544-abd8-45c1e79dc5b4",
+              "name": "Invoice created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Must be set to 2.0.0.",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The hexadecimal public key generated from the client private key. Required for merchant facade.",
+                    "key": "X-Identity",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ECDSA signature of the full request URL concatenated with the request body, signed with the client private key. Required for merchant facade.",
+                    "key": "X-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"your-api-token\",\n  \"price\": 10,\n  \"currency\": \"USD\",\n  \"orderId\": \"order-12345\",\n  \"itemDesc\": \"Example product\",\n  \"notificationURL\": \"https://yourdomain.com/ipn\",\n  \"redirectURL\": \"https://yourdomain.com/success\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"url\": \"http://MhKdNsQliBopcGvG.ptzgL2ipghtnCBR5uoBFJU,N\",\n    \"status\": \"new\",\n    \"price\": 6914.08891606339,\n    \"currency\": \"string\",\n    \"orderId\": \"string\",\n    \"invoiceTime\": 8480,\n    \"expirationTime\": 6009,\n    \"currentTime\": 7604,\n    \"btcPrice\": \"string\",\n    \"btcDue\": \"string\",\n    \"btcPaid\": \"string\",\n    \"rate\": 7274.541659396186,\n    \"exceptionStatus\": \"string\",\n    \"buyerFields\": {\n      \"name\": \"string\",\n      \"address1\": \"string\",\n      \"address2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"zip\": \"string\",\n      \"country\": \"string\",\n      \"email\": \"EHhkJjJNZkRWq6@nCAH.jz\",\n      \"phone\": \"string\",\n      \"notify\": true\n    },\n    \"paymentUrls\": {},\n    \"token\": \"string\",\n    \"itemDesc\": \"string\",\n    \"posData\": \"string\",\n    \"guid\": \"string\",\n    \"notificationURL\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57621531-a769-47c5-bb07-c3ddcd9674ff",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Must be set to 2.0.0.",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The hexadecimal public key generated from the client private key. Required for merchant facade.",
+                    "key": "X-Identity",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ECDSA signature of the full request URL concatenated with the request body, signed with the client private key. Required for merchant facade.",
+                    "key": "X-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"your-api-token\",\n  \"price\": 10,\n  \"currency\": \"USD\",\n  \"orderId\": \"order-12345\",\n  \"itemDesc\": \"Example product\",\n  \"notificationURL\": \"https://yourdomain.com/ipn\",\n  \"redirectURL\": \"https://yourdomain.com/success\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 4964\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07a74149-1800-4d9d-b524-10700774a11a",
+              "name": "Unauthorized - invalid or missing token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Must be set to 2.0.0.",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The hexadecimal public key generated from the client private key. Required for merchant facade.",
+                    "key": "X-Identity",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ECDSA signature of the full request URL concatenated with the request body, signed with the client private key. Required for merchant facade.",
+                    "key": "X-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"your-api-token\",\n  \"price\": 10,\n  \"currency\": \"USD\",\n  \"orderId\": \"order-12345\",\n  \"itemDesc\": \"Example product\",\n  \"notificationURL\": \"https://yourdomain.com/ipn\",\n  \"redirectURL\": \"https://yourdomain.com/success\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 4964\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d06341e5-c447-4f83-9528-6c9a6225b2bf",
+          "name": "List Invoices",
+          "request": {
+            "name": "List Invoices",
+            "description": {
+              "content": "Retrieve a list of invoices filtered by date range and other criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) API token for merchant facade authentication."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateStart",
+                  "value": "<date>",
+                  "description": "Start date for filtering invoices (YYYY-MM-DD)."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateEnd",
+                  "value": "<date>",
+                  "description": "End date for filtering invoices (YYYY-MM-DD)."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by invoice status."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderId",
+                  "value": "<string>",
+                  "description": "Filter by merchant order ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Number of results to skip for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "68adfb44-c4ba-4ead-8f96-cc4d6921732e",
+              "name": "List of invoices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateStart",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateEnd",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"url\": \"https://hvdVfiMuAHVveDXvoh.inoKTQucb.nTIgZgmZwiVF+KY5Kwa,MShq67cG0+mWDlMZ7+e+ZraBYrFj\",\n      \"status\": \"expired\",\n      \"price\": 5963.822475231757,\n      \"currency\": \"string\",\n      \"orderId\": \"string\",\n      \"invoiceTime\": 9153,\n      \"expirationTime\": 3945,\n      \"currentTime\": 320,\n      \"btcPrice\": \"string\",\n      \"btcDue\": \"string\",\n      \"btcPaid\": \"string\",\n      \"rate\": 1081.6492076346062,\n      \"exceptionStatus\": \"string\",\n      \"buyerFields\": {\n        \"name\": \"string\",\n        \"address1\": \"string\",\n        \"address2\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zip\": \"string\",\n        \"country\": \"string\",\n        \"email\": \"8brprYAsznBRFt@F.qb\",\n        \"phone\": \"string\",\n        \"notify\": false\n      },\n      \"paymentUrls\": {},\n      \"token\": \"string\",\n      \"itemDesc\": \"string\",\n      \"posData\": \"string\",\n      \"guid\": \"string\",\n      \"notificationURL\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"url\": \"https://vpowMu.ybpsFRZMGeiT9CySRHB.scOYkS.YC9.Lrjp7uxFbDxRsegtA.4s\",\n      \"status\": \"complete\",\n      \"price\": 4673.7960884075,\n      \"currency\": \"string\",\n      \"orderId\": \"string\",\n      \"invoiceTime\": 2581,\n      \"expirationTime\": 6971,\n      \"currentTime\": 448,\n      \"btcPrice\": \"string\",\n      \"btcDue\": \"string\",\n      \"btcPaid\": \"string\",\n      \"rate\": 6000.7355012896805,\n      \"exceptionStatus\": \"string\",\n      \"buyerFields\": {\n        \"name\": \"string\",\n        \"address1\": \"string\",\n        \"address2\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zip\": \"string\",\n        \"country\": \"string\",\n        \"email\": \"jTpkEwj78ZU@mVfDPACgP.yzt\",\n        \"phone\": \"string\",\n        \"notify\": true\n      },\n      \"paymentUrls\": {},\n      \"token\": \"string\",\n      \"itemDesc\": \"string\",\n      \"posData\": \"string\",\n      \"guid\": \"string\",\n      \"notificationURL\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65d8a33b-35cc-4c43-ab1e-38129b0bf24b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateStart",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateEnd",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 4964\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64e14a6d-c009-4da6-b463-60c49b154770",
+          "name": "Retrieve an Invoice",
+          "request": {
+            "name": "Retrieve an Invoice",
+            "description": {
+              "content": "Retrieve a specific invoice by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":invoiceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "API token. Pass as URL parameter when fetching via merchant or pos facade."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceId",
+                  "description": "(Required) ID of the invoice to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Required for merchant facade.",
+                "key": "X-Identity",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Required for merchant facade.",
+                "key": "X-Signature",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "efdc3629-8ff7-4413-a1a5-92676c950e2f",
+              "name": "Invoice details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) ID of the invoice to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Required for merchant facade.",
+                    "key": "X-Identity",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Required for merchant facade.",
+                    "key": "X-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"url\": \"http://MhKdNsQliBopcGvG.ptzgL2ipghtnCBR5uoBFJU,N\",\n    \"status\": \"new\",\n    \"price\": 6914.08891606339,\n    \"currency\": \"string\",\n    \"orderId\": \"string\",\n    \"invoiceTime\": 8480,\n    \"expirationTime\": 6009,\n    \"currentTime\": 7604,\n    \"btcPrice\": \"string\",\n    \"btcDue\": \"string\",\n    \"btcPaid\": \"string\",\n    \"rate\": 7274.541659396186,\n    \"exceptionStatus\": \"string\",\n    \"buyerFields\": {\n      \"name\": \"string\",\n      \"address1\": \"string\",\n      \"address2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"zip\": \"string\",\n      \"country\": \"string\",\n      \"email\": \"EHhkJjJNZkRWq6@nCAH.jz\",\n      \"phone\": \"string\",\n      \"notify\": true\n    },\n    \"paymentUrls\": {},\n    \"token\": \"string\",\n    \"itemDesc\": \"string\",\n    \"posData\": \"string\",\n    \"guid\": \"string\",\n    \"notificationURL\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c86648fc-9f85-4658-9060-fb28a724c853",
+              "name": "Invoice not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) ID of the invoice to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Required for merchant facade.",
+                    "key": "X-Identity",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Required for merchant facade.",
+                    "key": "X-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 4964\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://bitpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "beb6e719-0925-407f-8ea1-44b2c70fa96d",
+    "name": "BitPay Bills Invoices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.\n\n\nContact Support:\n Name: BitPay Support",
+      "type": "text/plain"
+    }
+  }
+}

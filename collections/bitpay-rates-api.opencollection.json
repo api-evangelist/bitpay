@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BitPay Bills Rates API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Exchange Rates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bitpay.com/rates"
+          },
+          "docs": "Retrieve exchange rate data representing fiat currency equivalents per cryptocurrency unit. Returns rates for all supported cryptocurrency and fiat currency pairs.\n"
+        },
+        {
+          "info": {
+            "name": "Get Exchange Rates for a Base Currency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bitpay.com/rates/:baseCurrency",
+            "params": [
+              {
+                "name": "baseCurrency",
+                "value": "",
+                "type": "path",
+                "description": "The base cryptocurrency code (e.g., BTC, ETH)."
+              }
+            ]
+          },
+          "docs": "Retrieve exchange rates for a specific base cryptocurrency against all supported fiat currencies.\n"
+        },
+        {
+          "info": {
+            "name": "Get Exchange Rate for Currency Pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bitpay.com/rates/:baseCurrency/:quoteCurrency",
+            "params": [
+              {
+                "name": "baseCurrency",
+                "value": "",
+                "type": "path",
+                "description": "The base cryptocurrency code (e.g., BTC)."
+              },
+              {
+                "name": "quoteCurrency",
+                "value": "",
+                "type": "path",
+                "description": "The quote fiat currency code (e.g., USD)."
+              }
+            ]
+          },
+          "docs": "Retrieve the exchange rate for a specific cryptocurrency/fiat currency pair.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

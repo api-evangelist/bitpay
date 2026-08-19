@@ -1,0 +1,904 @@
+{
+  "item": [
+    {
+      "id": "6e38ba4d-d045-4b77-b81e-96b87223074c",
+      "name": "Bills",
+      "description": {
+        "content": "Manage payment requests sent to specific buyers with fixed-price line items.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6c6d8c86-dfbb-4d24-a58e-8ea520fc3294",
+          "name": "Create a Bill",
+          "request": {
+            "name": "Create a Bill",
+            "description": {
+              "content": "Create a payment request sent to a specific buyer with fixed-price line items typically denominated in fiat currency. Supports email billing and recurring payment scheduling via subscriptions.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bills"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"items\": [\n    {\n      \"price\": \"<number>\",\n      \"quantity\": \"<integer>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"price\": \"<number>\",\n      \"quantity\": \"<integer>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"number\": \"<string>\",\n  \"name\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<email>\",\n  \"cc\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"phone\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"passProcessingFee\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "641a1fee-c997-41cd-b685-73ff9284610e",
+              "name": "Bill created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"your-api-token\",\n  \"currency\": \"USD\",\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"dueDate\": \"2026-07-01T00:00:00Z\",\n  \"items\": [\n    {\n      \"description\": \"Consulting services\",\n      \"price\": 150,\n      \"quantity\": 2\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"status\": \"paid\",\n    \"url\": \"http://VhrYuPgVkjyXkJdQgJXsiMrIfgZrx.eunDYMLw2gGiJ2UZzjKKU\",\n    \"number\": \"string\",\n    \"currency\": \"string\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"dueDate\": \"1957-12-07T14:57:48.901Z\",\n    \"items\": [\n      {\n        \"price\": 5280.063590855094,\n        \"quantity\": 5062,\n        \"description\": \"string\"\n      },\n      {\n        \"price\": 9968.536624754395,\n        \"quantity\": 4807,\n        \"description\": \"string\"\n      }\n    ],\n    \"token\": \"string\",\n    \"merchant\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df1b31f0-785b-4b06-9540-9c6f23886a70",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"your-api-token\",\n  \"currency\": \"USD\",\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"dueDate\": \"2026-07-01T00:00:00Z\",\n  \"items\": [\n    {\n      \"description\": \"Consulting services\",\n      \"price\": 150,\n      \"quantity\": 2\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 3614\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49d80ec6-9fef-40e7-96bb-4683bd0d5138",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"your-api-token\",\n  \"currency\": \"USD\",\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"dueDate\": \"2026-07-01T00:00:00Z\",\n  \"items\": [\n    {\n      \"description\": \"Consulting services\",\n      \"price\": 150,\n      \"quantity\": 2\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 3614\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62b6bb04-b612-47df-acf4-844bc7113131",
+          "name": "List Bills",
+          "request": {
+            "name": "List Bills",
+            "description": {
+              "content": "Retrieve a list of bills, optionally filtered by status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bills"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) API token for authentication."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by bill status."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "435a5328-2bbb-4cf1-befb-6718added247",
+              "name": "List of bills",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"status\": \"acknowledged\",\n      \"url\": \"http://kmYfuQSODAKXGyXXCiUannuoLCIxP.afKxToeP0EjVqq4Cp.WrMyMW+n4PKNHpzwhBXWjrId7nqqKNgyZ8j\",\n      \"number\": \"string\",\n      \"currency\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"dueDate\": \"1964-09-01T18:07:19.400Z\",\n      \"items\": [\n        {\n          \"price\": 1627.6821603176638,\n          \"quantity\": 6422,\n          \"description\": \"string\"\n        },\n        {\n          \"price\": 6354.740494576032,\n          \"quantity\": 9791,\n          \"description\": \"string\"\n        }\n      ],\n      \"token\": \"string\",\n      \"merchant\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"status\": \"paid\",\n      \"url\": \"http://ANiWhCMzaptTyzPqsRV.bulutoVJCAKgD8pcsHaeebbeQRcDAFyPE3w1TZa2PDJFwtH-bTR6\",\n      \"number\": \"string\",\n      \"currency\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"dueDate\": \"1990-05-07T21:30:13.935Z\",\n      \"items\": [\n        {\n          \"price\": 4919.381858040436,\n          \"quantity\": 7323,\n          \"description\": \"string\"\n        },\n        {\n          \"price\": 643.1400368755358,\n          \"quantity\": 8356,\n          \"description\": \"string\"\n        }\n      ],\n      \"token\": \"string\",\n      \"merchant\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "475a035a-e7fe-4442-a571-da5d49492d65",
+          "name": "Retrieve a Bill",
+          "request": {
+            "name": "Retrieve a Bill",
+            "description": {
+              "content": "Retrieve a specific bill by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bills",
+                ":billId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "billId",
+                  "description": "(Required) ID of the bill to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "def5e0d0-6e42-4665-8098-1144f93fcd0b",
+              "name": "Bill details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills",
+                    ":billId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billId",
+                      "description": "(Required) ID of the bill to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"status\": \"paid\",\n    \"url\": \"http://VhrYuPgVkjyXkJdQgJXsiMrIfgZrx.eunDYMLw2gGiJ2UZzjKKU\",\n    \"number\": \"string\",\n    \"currency\": \"string\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"dueDate\": \"1957-12-07T14:57:48.901Z\",\n    \"items\": [\n      {\n        \"price\": 5280.063590855094,\n        \"quantity\": 5062,\n        \"description\": \"string\"\n      },\n      {\n        \"price\": 9968.536624754395,\n        \"quantity\": 4807,\n        \"description\": \"string\"\n      }\n    ],\n    \"token\": \"string\",\n    \"merchant\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d14345bb-5f82-4194-8980-3a115e8f193d",
+              "name": "Bill not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills",
+                    ":billId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billId",
+                      "description": "(Required) ID of the bill to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 3614\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "838a6f6a-cf56-4021-86bf-66cd703c4fd1",
+          "name": "Update a Bill",
+          "request": {
+            "name": "Update a Bill",
+            "description": {
+              "content": "Update an existing bill. Bills can be updated only if they have not been paid.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bills",
+                ":billId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "billId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"items\": [\n    {\n      \"price\": \"<number>\",\n      \"quantity\": \"<integer>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"price\": \"<number>\",\n      \"quantity\": \"<integer>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"number\": \"<string>\",\n  \"name\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<email>\",\n  \"cc\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"phone\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"passProcessingFee\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e567599f-8b7d-46ce-ac87-9cb94e605f8a",
+              "name": "Bill updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills",
+                    ":billId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"items\": [\n    {\n      \"price\": 6632.051728486575,\n      \"quantity\": 5810,\n      \"description\": \"string\"\n    },\n    {\n      \"price\": 1418.9975821006783,\n      \"quantity\": 9503,\n      \"description\": \"string\"\n    }\n  ],\n  \"number\": \"<string>\",\n  \"name\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"country\": \"<string>\",\n  \"email\": \"<email>\",\n  \"cc\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"phone\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"passProcessingFee\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"status\": \"paid\",\n    \"url\": \"http://VhrYuPgVkjyXkJdQgJXsiMrIfgZrx.eunDYMLw2gGiJ2UZzjKKU\",\n    \"number\": \"string\",\n    \"currency\": \"string\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"dueDate\": \"1957-12-07T14:57:48.901Z\",\n    \"items\": [\n      {\n        \"price\": 5280.063590855094,\n        \"quantity\": 5062,\n        \"description\": \"string\"\n      },\n      {\n        \"price\": 9968.536624754395,\n        \"quantity\": 4807,\n        \"description\": \"string\"\n      }\n    ],\n    \"token\": \"string\",\n    \"merchant\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "479fb743-49d5-4be3-9eb1-35df6d4a8d0f",
+          "name": "Deliver a Bill",
+          "request": {
+            "name": "Deliver a Bill",
+            "description": {
+              "content": "Trigger email delivery of a bill to the recipient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bills",
+                ":billId",
+                "deliveries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "billId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e3fe6bf-1836-4dfc-a590-8599142e9ac5",
+              "name": "Bill delivered successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bills",
+                    ":billId",
+                    "deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://bitpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1d280b23-d201-42e3-ad6d-1f7029faf355",
+    "name": "BitPay Bills API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.\n\n\nContact Support:\n Name: BitPay Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "item": [
+    {
+      "id": "49c1c953-072a-4d1c-9c80-3ceaad14b76a",
+      "name": "Rates",
+      "description": {
+        "content": "Retrieve exchange rate data representing fiat currency equivalents per cryptocurrency unit.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b03f3d9e-32f3-4594-b05c-cc9eab6cd4d0",
+          "name": "Get Exchange Rates",
+          "request": {
+            "name": "Get Exchange Rates",
+            "description": {
+              "content": "Retrieve exchange rate data representing fiat currency equivalents per cryptocurrency unit. Returns rates for all supported cryptocurrency and fiat currency pairs.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba52965e-a25e-48eb-9dc9-db1d21276b24",
+              "name": "Exchange rates data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"name\": \"string\",\n      \"code\": \"string\",\n      \"rate\": 4608.410924352148\n    },\n    {\n      \"name\": \"string\",\n      \"code\": \"string\",\n      \"rate\": 1073.6719388179617\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5226527b-7071-4f1c-b54b-86028107b8be",
+          "name": "Get Exchange Rates for a Base Currency",
+          "request": {
+            "name": "Get Exchange Rates for a Base Currency",
+            "description": {
+              "content": "Retrieve exchange rates for a specific base cryptocurrency against all supported fiat currencies.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rates",
+                ":baseCurrency"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "baseCurrency",
+                  "description": "(Required) The base cryptocurrency code (e.g., BTC, ETH)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a5b561d-e593-49b4-9c1d-3489747b2c5b",
+              "name": "Exchange rates for the specified currency",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rates",
+                    ":baseCurrency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) The base cryptocurrency code (e.g., BTC, ETH)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"name\": \"string\",\n      \"code\": \"string\",\n      \"rate\": 4608.410924352148\n    },\n    {\n      \"name\": \"string\",\n      \"code\": \"string\",\n      \"rate\": 1073.6719388179617\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e70d754-46f4-4eac-9efc-63d33130a1d0",
+          "name": "Get Exchange Rate for Currency Pair",
+          "request": {
+            "name": "Get Exchange Rate for Currency Pair",
+            "description": {
+              "content": "Retrieve the exchange rate for a specific cryptocurrency/fiat currency pair.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rates",
+                ":baseCurrency",
+                ":quoteCurrency"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "baseCurrency",
+                  "description": "(Required) The base cryptocurrency code (e.g., BTC)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quoteCurrency",
+                  "description": "(Required) The quote fiat currency code (e.g., USD)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43e1e2f0-e075-4e1a-b5ef-6abf56409830",
+              "name": "Exchange rate for the specified pair",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rates",
+                    ":baseCurrency",
+                    ":quoteCurrency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) The base cryptocurrency code (e.g., BTC)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quoteCurrency",
+                      "description": "(Required) The quote fiat currency code (e.g., USD)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"name\": \"string\",\n    \"code\": \"string\",\n    \"rate\": 8324.639616925384\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://bitpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6c7afc9a-be29-442b-b19d-913e89d8040e",
+    "name": "BitPay Bills Rates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.\n\n\nContact Support:\n Name: BitPay Support",
+      "type": "text/plain"
+    }
+  }
+}

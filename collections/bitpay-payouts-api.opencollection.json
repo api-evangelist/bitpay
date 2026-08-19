@@ -1,0 +1,184 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BitPay Bills Payouts API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Payouts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bitpay.com/payouts",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reference",
+                "value": "",
+                "type": "query",
+                "description": "Filter by merchant reference ID."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of payouts, optionally filtered by date range and status."
+        },
+        {
+          "info": {
+            "name": "Create a Payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bitpay.com/payouts",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a cryptocurrency withdrawal payment to an active BitPay recipient for customer payouts, marketplace disbursements, affiliate networks, or payroll processing.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve a Payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bitpay.com/payouts/:payoutId",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payoutId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific payout by its ID."
+        },
+        {
+          "info": {
+            "name": "Cancel a Payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://bitpay.com/payouts/:payoutId",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payoutId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Cancel a payout that has not yet been processed."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,196 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BitPay Bills API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bills",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Bills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bitpay.com/bills",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "API token for authentication."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by bill status."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of bills, optionally filtered by status."
+        },
+        {
+          "info": {
+            "name": "Create a Bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bitpay.com/bills",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a payment request sent to a specific buyer with fixed-price line items typically denominated in fiat currency. Supports email billing and recurring payment scheduling via subscriptions.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve a Bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bitpay.com/bills/:billId",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "billId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the bill to retrieve."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific bill by its ID."
+        },
+        {
+          "info": {
+            "name": "Update a Bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://bitpay.com/bills/:billId",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "billId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing bill. Bills can be updated only if they have not been paid."
+        },
+        {
+          "info": {
+            "name": "Deliver a Bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bitpay.com/bills/:billId/deliveries",
+            "headers": [
+              {
+                "name": "X-Accept-Version",
+                "value": ""
+              },
+              {
+                "name": "X-Identity",
+                "value": ""
+              },
+              {
+                "name": "X-Signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "billId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Trigger email delivery of a bill to the recipient."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

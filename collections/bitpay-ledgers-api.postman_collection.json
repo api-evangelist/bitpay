@@ -1,0 +1,322 @@
+{
+  "item": [
+    {
+      "id": "69b9ba08-57e7-4a60-ad23-c663e949b5ef",
+      "name": "Ledgers",
+      "description": {
+        "content": "Access account balance records by currency and track individual ledger entries.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "764bbd3c-dde8-446b-8eeb-da0efb09c58e",
+          "name": "List Ledgers",
+          "request": {
+            "name": "List Ledgers",
+            "description": {
+              "content": "Access account balance records by currency. Provides accounting data for merchant financial reconciliation.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ledgers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9dddd6bc-d3a4-4d24-826f-4d06dc044963",
+              "name": "List of ledgers with balances",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ledgers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"currency\": \"string\",\n      \"balance\": 8522.210842088232\n    },\n    {\n      \"currency\": \"string\",\n      \"balance\": 813.900149700264\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a2fc73a-f7f3-4f0b-84a4-26b99739086f",
+          "name": "Get Ledger Entries",
+          "request": {
+            "name": "Get Ledger Entries",
+            "description": {
+              "content": "Retrieve individual ledger entries for a specific currency. Track individual transactions for merchant financial reconciliation.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ledgers",
+                ":currency"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "currency",
+                  "description": "(Required) ISO 4217 currency code or cryptocurrency code."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "702a23fa-4456-4ef0-b9c7-1cde16320b77",
+              "name": "Ledger entries for the specified currency",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ledgers",
+                    ":currency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "currency",
+                      "description": "(Required) ISO 4217 currency code or cryptocurrency code."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"string\",\n      \"amount\": 2858.695242982324,\n      \"code\": 6702,\n      \"description\": \"string\",\n      \"timestamp\": \"1991-12-13T20:45:41.928Z\",\n      \"txType\": \"string\",\n      \"scale\": 6933,\n      \"invoiceId\": \"string\",\n      \"buyerFields\": {\n        \"name\": \"string\",\n        \"address1\": \"string\",\n        \"address2\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zip\": \"string\",\n        \"country\": \"string\",\n        \"email\": \"9xsPolNJe4dU6gq@ibGUmEbuuxpRuLU.yht\",\n        \"phone\": \"string\",\n        \"notify\": false\n      },\n      \"invoiceAmount\": 4380.91915127917,\n      \"invoiceCurrency\": \"string\",\n      \"transactionCurrency\": \"string\",\n      \"id\": \"string\"\n    },\n    {\n      \"type\": \"string\",\n      \"amount\": 2634.275181641559,\n      \"code\": 9337,\n      \"description\": \"string\",\n      \"timestamp\": \"2004-01-29T05:22:30.635Z\",\n      \"txType\": \"string\",\n      \"scale\": 9924,\n      \"invoiceId\": \"string\",\n      \"buyerFields\": {\n        \"name\": \"string\",\n        \"address1\": \"string\",\n        \"address2\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zip\": \"string\",\n        \"country\": \"string\",\n        \"email\": \"9JV6WGNkW@nFREFWwSTlmaSLchXkSJkhndzFrZBiEh.avfr\",\n        \"phone\": \"string\",\n        \"notify\": true\n      },\n      \"invoiceAmount\": 9997.100881450207,\n      \"invoiceCurrency\": \"string\",\n      \"transactionCurrency\": \"string\",\n      \"id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://bitpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "28b71d57-81f9-442a-aa55-95e51b32fd3a",
+    "name": "BitPay Bills Ledgers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.\n\n\nContact Support:\n Name: BitPay Support",
+      "type": "text/plain"
+    }
+  }
+}

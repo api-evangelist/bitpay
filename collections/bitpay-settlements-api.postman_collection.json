@@ -1,0 +1,479 @@
+{
+  "item": [
+    {
+      "id": "5e06256a-e795-40e7-8140-0113aab3502b",
+      "name": "Settlements",
+      "description": {
+        "content": "Access transfer reports documenting payment profits settled from BitPay.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "338108a6-e573-4366-a249-23110b05e17e",
+          "name": "List Settlements",
+          "request": {
+            "name": "List Settlements",
+            "description": {
+              "content": "Access transfer reports documenting payment profits settled from BitPay to merchant bank accounts and cryptocurrency wallets. Supports USD, EUR, GBP, CAD, AUD, NZD, MXN, and major cryptocurrencies.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settlements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "Filter by settlement currency (ISO 4217 code)."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateStart",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateEnd",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8760269-900b-4532-8fa6-6f1e82e3b3fe",
+              "name": "List of settlements",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateStart",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateEnd",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"accountId\": \"string\",\n      \"currency\": \"string\",\n      \"payoutInfo\": {\n        \"label\": \"string\",\n        \"bankCountry\": \"string\",\n        \"name\": \"string\",\n        \"bank\": \"string\",\n        \"swift\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"postal\": \"string\",\n        \"sort\": \"string\",\n        \"wire\": true,\n        \"bankName\": \"string\",\n        \"bankAddress\": \"string\",\n        \"bankCity\": \"string\",\n        \"bankPostal\": \"string\",\n        \"account\": \"string\"\n      },\n      \"status\": \"processing\",\n      \"dateCreated\": \"1971-01-01T21:54:04.727Z\",\n      \"dateExecuted\": \"1968-06-08T09:53:53.667Z\",\n      \"dateCompleted\": \"1992-10-01T19:06:23.157Z\",\n      \"openingDate\": \"2010-09-21T21:37:33.199Z\",\n      \"closingDate\": \"2024-01-09T15:49:35.683Z\",\n      \"openingBalance\": 3148.3272063925338,\n      \"ledgerEntriesSum\": 1431.2084903299572,\n      \"withHoldings\": [\n        {\n          \"amount\": 6348.575028559744,\n          \"code\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"amount\": 2234.5391997443385,\n          \"code\": \"string\",\n          \"description\": \"string\"\n        }\n      ],\n      \"withHoldingsSum\": 1599.3248505869662,\n      \"totalAmount\": 5207.683209566042,\n      \"token\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"accountId\": \"string\",\n      \"currency\": \"string\",\n      \"payoutInfo\": {\n        \"label\": \"string\",\n        \"bankCountry\": \"string\",\n        \"name\": \"string\",\n        \"bank\": \"string\",\n        \"swift\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"postal\": \"string\",\n        \"sort\": \"string\",\n        \"wire\": false,\n        \"bankName\": \"string\",\n        \"bankAddress\": \"string\",\n        \"bankCity\": \"string\",\n        \"bankPostal\": \"string\",\n        \"account\": \"string\"\n      },\n      \"status\": \"complete\",\n      \"dateCreated\": \"1965-07-15T05:43:52.755Z\",\n      \"dateExecuted\": \"2021-01-27T07:06:58.347Z\",\n      \"dateCompleted\": \"2010-06-16T04:20:15.930Z\",\n      \"openingDate\": \"2018-05-31T04:18:14.191Z\",\n      \"closingDate\": \"1996-03-06T21:38:48.181Z\",\n      \"openingBalance\": 7232.5010146420345,\n      \"ledgerEntriesSum\": 9661.651147387958,\n      \"withHoldings\": [\n        {\n          \"amount\": 254.76693885895796,\n          \"code\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"amount\": 60.34568945403884,\n          \"code\": \"string\",\n          \"description\": \"string\"\n        }\n      ],\n      \"withHoldingsSum\": 3184.158593606402,\n      \"totalAmount\": 9118.27569811659,\n      \"token\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "30aae496-5ff8-4841-bda8-c07d6f19e649",
+          "name": "Retrieve a Settlement",
+          "request": {
+            "name": "Retrieve a Settlement",
+            "description": {
+              "content": "Retrieve a specific settlement report by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settlements",
+                ":settlementId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "settlementId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e33867e-c05b-47c6-8f97-9c67176cb50c",
+              "name": "Settlement details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    ":settlementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "settlementId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"accountId\": \"string\",\n    \"currency\": \"string\",\n    \"payoutInfo\": {\n      \"label\": \"string\",\n      \"bankCountry\": \"string\",\n      \"name\": \"string\",\n      \"bank\": \"string\",\n      \"swift\": \"string\",\n      \"address\": \"string\",\n      \"city\": \"string\",\n      \"postal\": \"string\",\n      \"sort\": \"string\",\n      \"wire\": false,\n      \"bankName\": \"string\",\n      \"bankAddress\": \"string\",\n      \"bankCity\": \"string\",\n      \"bankPostal\": \"string\",\n      \"account\": \"string\"\n    },\n    \"status\": \"processing\",\n    \"dateCreated\": \"2023-11-29T14:10:22.435Z\",\n    \"dateExecuted\": \"2005-01-12T20:59:33.476Z\",\n    \"dateCompleted\": \"1960-07-26T02:12:26.866Z\",\n    \"openingDate\": \"1995-10-15T23:21:38.682Z\",\n    \"closingDate\": \"1965-03-25T03:53:34.196Z\",\n    \"openingBalance\": 3242.6516254755666,\n    \"ledgerEntriesSum\": 1922.3631400552476,\n    \"withHoldings\": [\n      {\n        \"amount\": 7198.789473626076,\n        \"code\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"amount\": 4043.356101011436,\n        \"code\": \"string\",\n        \"description\": \"string\"\n      }\n    ],\n    \"withHoldingsSum\": 2075.6170883770687,\n    \"totalAmount\": 3338.005803107501,\n    \"token\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e469c8cf-fffb-41cc-b71d-890df02bff73",
+          "name": "Get Settlement Reconciliation Report",
+          "request": {
+            "name": "Get Settlement Reconciliation Report",
+            "description": {
+              "content": "Retrieve a detailed reconciliation report for a specific settlement.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settlements",
+                ":settlementId",
+                "reconciliationReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "settlementId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Accept-Version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-Identity",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49989535-f232-4ab5-bef3-1bbd06dd88be",
+              "name": "Reconciliation report",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    ":settlementId",
+                    "reconciliationReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "settlementId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Accept-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Identity",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"accountId\": \"string\",\n    \"currency\": \"string\",\n    \"payoutInfo\": {},\n    \"openingDate\": \"1971-03-20T16:21:26.761Z\",\n    \"closingDate\": \"2023-08-22T10:11:57.164Z\",\n    \"openingBalance\": 343.82061342586366,\n    \"ledgerEntriesSum\": 7728.692186509951,\n    \"withHoldingsSum\": 7041.141005326196,\n    \"totalAmount\": 1395.929994510562,\n    \"ledgerEntries\": [\n      {\n        \"code\": 5371,\n        \"invoiceId\": \"string\",\n        \"description\": \"string\",\n        \"timestamp\": \"2002-10-28T04:48:30.663Z\",\n        \"amount\": 3428.18848846823,\n        \"id\": \"string\"\n      },\n      {\n        \"code\": 1024,\n        \"invoiceId\": \"string\",\n        \"description\": \"string\",\n        \"timestamp\": \"1968-10-06T07:19:10.997Z\",\n        \"amount\": 1887.618157033083,\n        \"id\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://bitpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2b7f4186-cde1-4246-b5a2-93cb84ac4ee5",
+    "name": "BitPay Bills Settlements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.\n\n\nContact Support:\n Name: BitPay Support",
+      "type": "text/plain"
+    }
+  }
+}
