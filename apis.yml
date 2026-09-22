@@ -29,6 +29,9 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bitpay.png
 url: https://raw.githubusercontent.com/api-evangelist/bitpay/refs/heads/main/apis.yml
 version: '0.19'
 modified: '2026-06-13'
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-09-20
 tags:
   - Cryptocurrency
   - Payments
