@@ -1,13 +1,7 @@
 {
   "provider": "bitpay",
   "sources": [
-    "bitpay-bills-api-openapi.yml",
-    "bitpay-invoices-api-openapi.yml",
-    "bitpay-ledgers-api-openapi.yml",
-    "bitpay-payouts-api-openapi.yml",
-    "bitpay-rates-api-openapi.yml",
-    "bitpay-refunds-api-openapi.yml",
-    "bitpay-settlements-api-openapi.yml"
+    "_original/openapi.yml"
   ],
   "outputs": [
     "bitpay-bills-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "bitpay-bills-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bitpay-invoices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bitpay-ledgers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bitpay-payouts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bitpay-rates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bitpay-refunds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bitpay-settlements-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

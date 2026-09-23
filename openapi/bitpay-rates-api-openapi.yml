@@ -1,9 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: BitPay Bills Rates API
-  description: 'BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
-
-    '
+  title: BitPay Rates API
+  description: BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
   version: 2.0.0
   contact:
     name: BitPay Support
@@ -22,9 +20,7 @@ paths:
     get:
       operationId: getRates
       summary: Get Exchange Rates
-      description: 'Retrieve exchange rate data representing fiat currency equivalents per cryptocurrency unit. Returns rates for all supported cryptocurrency and fiat currency pairs.
-
-        '
+      description: Retrieve exchange rate data representing fiat currency equivalents per cryptocurrency unit. Returns rates for all supported cryptocurrency and fiat currency pairs.
       tags:
       - Rates
       responses:
@@ -43,9 +39,7 @@ paths:
     get:
       operationId: getRatesForCurrency
       summary: Get Exchange Rates for a Base Currency
-      description: 'Retrieve exchange rates for a specific base cryptocurrency against all supported fiat currencies.
-
-        '
+      description: Retrieve exchange rates for a specific base cryptocurrency against all supported fiat currencies.
       tags:
       - Rates
       parameters:
@@ -79,9 +73,7 @@ paths:
     get:
       operationId: getRate
       summary: Get Exchange Rate for Currency Pair
-      description: 'Retrieve the exchange rate for a specific cryptocurrency/fiat currency pair.
-
-        '
+      description: Retrieve the exchange rate for a specific cryptocurrency/fiat currency pair.
       tags:
       - Rates
       parameters:

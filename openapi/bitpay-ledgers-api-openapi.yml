@@ -1,9 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: BitPay Bills Ledgers API
-  description: 'BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
-
-    '
+  title: BitPay Ledgers API
+  description: BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
   version: 2.0.0
   contact:
     name: BitPay Support
@@ -22,9 +20,7 @@ paths:
     get:
       operationId: listLedgers
       summary: List Ledgers
-      description: 'Access account balance records by currency. Provides accounting data for merchant financial reconciliation.
-
-        '
+      description: Access account balance records by currency. Provides accounting data for merchant financial reconciliation.
       tags:
       - Ledgers
       parameters:
@@ -64,9 +60,7 @@ paths:
     get:
       operationId: getLedgerEntries
       summary: Get Ledger Entries
-      description: 'Retrieve individual ledger entries for a specific currency. Track individual transactions for merchant financial reconciliation.
-
-        '
+      description: Retrieve individual ledger entries for a specific currency. Track individual transactions for merchant financial reconciliation.
       tags:
       - Ledgers
       parameters:
@@ -128,6 +122,30 @@ paths:
                       $ref: '#/components/schemas/LedgerEntry'
 components:
   schemas:
+    Buyer:
+      type: object
+      properties:
+        name:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        notify:
+          type: boolean
     LedgerEntry:
       type: object
       properties:
@@ -179,27 +197,3 @@ components:
         balance:
           type: number
           description: Current balance in this currency.
-    Buyer:
-      type: object
-      properties:
-        name:
-          type: string
-        address1:
-          type: string
-        address2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip:
-          type: string
-        country:
-          type: string
-        email:
-          type: string
-          format: email
-        phone:
-          type: string
-        notify:
-          type: boolean

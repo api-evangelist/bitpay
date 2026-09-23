@@ -1,9 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: BitPay Bills API
-  description: 'BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
-
-    '
+  description: BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
   version: 2.0.0
   contact:
     name: BitPay Support
@@ -22,9 +20,7 @@ paths:
     post:
       operationId: createBill
       summary: Create a Bill
-      description: 'Create a payment request sent to a specific buyer with fixed-price line items typically denominated in fiat currency. Supports email billing and recurring payment scheduling via subscriptions.
-
-        '
+      description: Create a payment request sent to a specific buyer with fixed-price line items typically denominated in fiat currency. Supports email billing and recurring payment scheduling via subscriptions.
       tags:
       - Bills
       parameters:
@@ -273,81 +269,6 @@ paths:
                     example: success
 components:
   schemas:
-    BillItem:
-      type: object
-      required:
-      - price
-      - quantity
-      properties:
-        description:
-          type: string
-          description: Description of the line item.
-        price:
-          type: number
-          description: Unit price of the item.
-        quantity:
-          type: integer
-          description: Quantity of the item.
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        error:
-          type: string
-          description: Error code or type.
-        message:
-          type: string
-          description: Human-readable error message.
-        code:
-          type: integer
-          description: Numeric error code.
-    BillResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Bill'
-    Bill:
-      type: object
-      properties:
-        id:
-          type: string
-          description: BitPay bill ID.
-        status:
-          type: string
-          enum:
-          - draft
-          - sent
-          - new
-          - paid
-          - acknowledged
-          - refunded
-          - cancelled
-          - unpaid
-          - sentAndPaid
-        url:
-          type: string
-          format: uri
-        number:
-          type: string
-        currency:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
-        dueDate:
-          type: string
-          format: date-time
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/BillItem'
-        token:
-          type: string
-        merchant:
-          type: string
     CreateBillRequest:
       type: object
       required:
@@ -410,3 +331,78 @@ components:
           description: List of line items on the bill.
           items:
             $ref: '#/components/schemas/BillItem'
+    Bill:
+      type: object
+      properties:
+        id:
+          type: string
+          description: BitPay bill ID.
+        status:
+          type: string
+          enum:
+          - draft
+          - sent
+          - new
+          - paid
+          - acknowledged
+          - refunded
+          - cancelled
+          - unpaid
+          - sentAndPaid
+        url:
+          type: string
+          format: uri
+        number:
+          type: string
+        currency:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        dueDate:
+          type: string
+          format: date-time
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillItem'
+        token:
+          type: string
+        merchant:
+          type: string
+    BillItem:
+      type: object
+      required:
+      - price
+      - quantity
+      properties:
+        description:
+          type: string
+          description: Description of the line item.
+        price:
+          type: number
+          description: Unit price of the item.
+        quantity:
+          type: integer
+          description: Quantity of the item.
+    BillResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Bill'
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        error:
+          type: string
+          description: Error code or type.
+        message:
+          type: string
+          description: Human-readable error message.
+        code:
+          type: integer
+          description: Numeric error code.
