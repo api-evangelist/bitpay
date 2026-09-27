@@ -47,7 +47,6 @@ apis:
     in fiat currency. Supports email billing and recurring payment scheduling via subscriptions.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.bitpay.com/docs
-  baseURL: https://bitpay.com
   tags:
   - Bills
   - Billing
@@ -65,7 +64,6 @@ apis:
     disbursements, affiliate networks, and payroll processing.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.bitpay.com/docs
-  baseURL: https://bitpay.com
   tags:
   - Payouts
   - Cryptocurrency
@@ -83,7 +81,6 @@ apis:
     and overpaid amounts with cryptocurrency refund workflows.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.bitpay.com/docs
-  baseURL: https://bitpay.com
   tags:
   - Refunds
   - Payments
@@ -100,7 +97,6 @@ apis:
     and cryptocurrency wallets. Supports USD, EUR, GBP, CAD, AUD, NZD, MXN, and major cryptocurrencies.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.bitpay.com/docs
-  baseURL: https://bitpay.com
   tags:
   - Settlement
   - Finance
@@ -122,7 +118,6 @@ apis:
     BTC, ETH, BCH, XRP, DOGE, and stablecoins against major fiat currencies.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.bitpay.com/docs
-  baseURL: https://bitpay.com
   tags:
   - Rates
   - Exchange
@@ -140,7 +135,6 @@ apis:
     data for merchant financial reconciliation.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.bitpay.com/docs
-  baseURL: https://bitpay.com
   tags:
   - Ledgers
   - Finance
@@ -156,7 +150,7 @@ apis:
   name: BitPay Bills API
   description: Manage payment requests sent to specific buyers with fixed-price line items.
   humanURL: https://developer.bitpay.com/reference/create-an-invoice
-  baseURL: https://bitpay.com
+  baseURL: https://test.bitpay.com
   tags:
   - Bills
   properties:
@@ -169,7 +163,7 @@ apis:
   description: >-
     Create and manage time-sensitive payment requests with fixed prices in fiat or cryptocurrency.
   humanURL: https://developer.bitpay.com/reference/create-an-invoice
-  baseURL: https://bitpay.com
+  baseURL: https://test.bitpay.com
   tags:
   - Invoices
   properties:
@@ -181,7 +175,7 @@ apis:
   name: BitPay Ledgers API
   description: Access account balance records by currency and track individual ledger entries.
   humanURL: https://developer.bitpay.com/reference/create-an-invoice
-  baseURL: https://bitpay.com
+  baseURL: https://test.bitpay.com
   tags:
   - Ledgers
   properties:
@@ -193,7 +187,7 @@ apis:
   name: BitPay Payouts API
   description: Submit cryptocurrency withdrawal payments to active BitPay recipients.
   humanURL: https://developer.bitpay.com/reference/create-an-invoice
-  baseURL: https://bitpay.com
+  baseURL: https://test.bitpay.com
   tags:
   - Payouts
   properties:
@@ -206,7 +200,7 @@ apis:
   description: >-
     Retrieve exchange rate data representing fiat currency equivalents per cryptocurrency unit.
   humanURL: https://developer.bitpay.com/reference/create-an-invoice
-  baseURL: https://bitpay.com
+  baseURL: https://test.bitpay.com
   tags:
   - Rates
   properties:
@@ -218,7 +212,7 @@ apis:
   name: BitPay Refunds API
   description: Process full or partial refunds associated with invoices.
   humanURL: https://developer.bitpay.com/reference/create-an-invoice
-  baseURL: https://bitpay.com
+  baseURL: https://test.bitpay.com
   tags:
   - Refunds
   properties:
@@ -230,7 +224,7 @@ apis:
   name: BitPay Settlements API
   description: Access transfer reports documenting payment profits settled from BitPay.
   humanURL: https://developer.bitpay.com/reference/create-an-invoice
-  baseURL: https://bitpay.com
+  baseURL: https://test.bitpay.com
   tags:
   - Settlement
   tags_raw:

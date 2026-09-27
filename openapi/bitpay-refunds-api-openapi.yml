@@ -202,42 +202,11 @@ paths:
                     type: boolean
 components:
   schemas:
-    Refund:
+    RefundResponse:
       type: object
       properties:
-        id:
-          type: string
-          description: BitPay refund ID.
-        invoiceId:
-          type: string
-        status:
-          type: string
-          enum:
-          - created
-          - pending
-          - cancelled
-          - manual
-          - immediate
-          - failed
-          - complete
-        amount:
-          type: number
-        currency:
-          type: string
-        lastRefundNotification:
-          type: string
-          format: date-time
-        refundFee:
-          type: number
-        immediate:
-          type: boolean
-        buyerPaysRefundFee:
-          type: boolean
-        reference:
-          type: string
-        requestDate:
-          type: string
-          format: date-time
+        data:
+          $ref: '#/components/schemas/Refund'
     ErrorResponse:
       type: object
       properties:
@@ -285,8 +254,39 @@ components:
         reference:
           type: string
           description: Merchant-provided reference for the refund.
-    RefundResponse:
+    Refund:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/Refund'
+        id:
+          type: string
+          description: BitPay refund ID.
+        invoiceId:
+          type: string
+        status:
+          type: string
+          enum:
+          - created
+          - pending
+          - cancelled
+          - manual
+          - immediate
+          - failed
+          - complete
+        amount:
+          type: number
+        currency:
+          type: string
+        lastRefundNotification:
+          type: string
+          format: date-time
+        refundFee:
+          type: number
+        immediate:
+          type: boolean
+        buyerPaysRefundFee:
+          type: boolean
+        reference:
+          type: string
+        requestDate:
+          type: string
+          format: date-time

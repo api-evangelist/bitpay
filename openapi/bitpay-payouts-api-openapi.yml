@@ -229,11 +229,6 @@ paths:
                     type: boolean
 components:
   schemas:
-    PayoutResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Payout'
     Payout:
       type: object
       properties:
@@ -304,6 +299,11 @@ components:
         code:
           type: integer
           description: Numeric error code.
+    PayoutResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Payout'
     CreatePayoutRequest:
       type: object
       required:

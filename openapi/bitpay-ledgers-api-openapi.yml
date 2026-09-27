@@ -122,6 +122,15 @@ paths:
                       $ref: '#/components/schemas/LedgerEntry'
 components:
   schemas:
+    Ledger:
+      type: object
+      properties:
+        currency:
+          type: string
+          description: Currency code for this ledger.
+        balance:
+          type: number
+          description: Current balance in this currency.
     Buyer:
       type: object
       properties:
@@ -188,12 +197,3 @@ components:
         id:
           type: string
           description: Unique ledger entry ID.
-    Ledger:
-      type: object
-      properties:
-        currency:
-          type: string
-          description: Currency code for this ledger.
-        balance:
-          type: number
-          description: Current balance in this currency.

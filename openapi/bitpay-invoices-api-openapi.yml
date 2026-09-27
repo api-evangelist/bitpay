@@ -217,30 +217,75 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/Invoice'
-    Buyer:
+    Invoice:
       type: object
       properties:
-        name:
+        id:
           type: string
-        address1:
+          description: BitPay invoice ID.
+        url:
           type: string
-        address2:
+          format: uri
+          description: URL to the hosted invoice checkout page.
+        status:
           type: string
-        city:
+          enum:
+          - new
+          - paid
+          - confirmed
+          - complete
+          - expired
+          - invalid
+          description: Current status of the invoice.
+        price:
+          type: number
+          description: Invoice price in the specified currency.
+        currency:
           type: string
-        state:
+          description: Invoice currency code.
+        orderId:
           type: string
-        zip:
+          description: Merchant order ID.
+        invoiceTime:
+          type: integer
+          description: Invoice creation timestamp (Unix milliseconds).
+        expirationTime:
+          type: integer
+          description: Invoice expiration timestamp (Unix milliseconds).
+        currentTime:
+          type: integer
+          description: Current server timestamp (Unix milliseconds).
+        btcPrice:
           type: string
-        country:
+          description: BTC equivalent price locked at creation.
+        btcDue:
           type: string
-        email:
+          description: BTC amount still due.
+        btcPaid:
           type: string
-          format: email
-        phone:
+          description: BTC amount paid.
+        rate:
+          type: number
+          description: BTC/fiat exchange rate at invoice creation.
+        exceptionStatus:
           type: string
-        notify:
-          type: boolean
+          description: Exception status for underpaid/overpaid invoices.
+        buyerFields:
+          $ref: '#/components/schemas/Buyer'
+        paymentUrls:
+          type: object
+          description: Payment protocol URLs for various wallets.
+        token:
+          type: string
+          description: Invoice-specific token for status checks.
+        itemDesc:
+          type: string
+        posData:
+          type: string
+        guid:
+          type: string
+        notificationURL:
+          type: string
     CreateInvoiceRequest:
       type: object
       required:
@@ -348,75 +393,30 @@ components:
           minimum: 0
           maximum: 900000
           description: Payment window in milliseconds (0-900000).
-    Invoice:
+    Buyer:
       type: object
       properties:
-        id:
+        name:
           type: string
-          description: BitPay invoice ID.
-        url:
+        address1:
           type: string
-          format: uri
-          description: URL to the hosted invoice checkout page.
-        status:
+        address2:
           type: string
-          enum:
-          - new
-          - paid
-          - confirmed
-          - complete
-          - expired
-          - invalid
-          description: Current status of the invoice.
-        price:
-          type: number
-          description: Invoice price in the specified currency.
-        currency:
+        city:
           type: string
-          description: Invoice currency code.
-        orderId:
+        state:
           type: string
-          description: Merchant order ID.
-        invoiceTime:
-          type: integer
-          description: Invoice creation timestamp (Unix milliseconds).
-        expirationTime:
-          type: integer
-          description: Invoice expiration timestamp (Unix milliseconds).
-        currentTime:
-          type: integer
-          description: Current server timestamp (Unix milliseconds).
-        btcPrice:
+        zip:
           type: string
-          description: BTC equivalent price locked at creation.
-        btcDue:
+        country:
           type: string
-          description: BTC amount still due.
-        btcPaid:
+        email:
           type: string
-          description: BTC amount paid.
-        rate:
-          type: number
-          description: BTC/fiat exchange rate at invoice creation.
-        exceptionStatus:
+          format: email
+        phone:
           type: string
-          description: Exception status for underpaid/overpaid invoices.
-        buyerFields:
-          $ref: '#/components/schemas/Buyer'
-        paymentUrls:
-          type: object
-          description: Payment protocol URLs for various wallets.
-        token:
-          type: string
-          description: Invoice-specific token for status checks.
-        itemDesc:
-          type: string
-        posData:
-          type: string
-        guid:
-          type: string
-        notificationURL:
-          type: string
+        notify:
+          type: boolean
     ErrorResponse:
       type: object
       properties:
