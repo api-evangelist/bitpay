@@ -175,6 +175,54 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/Settlement'
+    ReconciliationReport:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            accountId:
+              type: string
+            currency:
+              type: string
+            payoutInfo:
+              type: object
+            openingDate:
+              type: string
+              format: date-time
+            closingDate:
+              type: string
+              format: date-time
+            openingBalance:
+              type: number
+            ledgerEntriesSum:
+              type: number
+            withHoldings:
+              type: array
+              items:
+                type: object
+            withHoldingsSum:
+              type: number
+            totalAmount:
+              type: number
+            ledgerEntries:
+              type: array
+              items:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  invoiceId:
+                    type: string
+                  description:
+                    type: string
+                  timestamp:
+                    type: string
+                    format: date-time
+                  amount:
+                    type: number
+                  id:
+                    type: string
     Settlement:
       type: object
       properties:
@@ -261,51 +309,3 @@ components:
           type: number
         token:
           type: string
-    ReconciliationReport:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            accountId:
-              type: string
-            currency:
-              type: string
-            payoutInfo:
-              type: object
-            openingDate:
-              type: string
-              format: date-time
-            closingDate:
-              type: string
-              format: date-time
-            openingBalance:
-              type: number
-            ledgerEntriesSum:
-              type: number
-            withHoldings:
-              type: array
-              items:
-                type: object
-            withHoldingsSum:
-              type: number
-            totalAmount:
-              type: number
-            ledgerEntries:
-              type: array
-              items:
-                type: object
-                properties:
-                  code:
-                    type: integer
-                  invoiceId:
-                    type: string
-                  description:
-                    type: string
-                  timestamp:
-                    type: string
-                    format: date-time
-                  amount:
-                    type: number
-                  id:
-                    type: string

@@ -207,6 +207,42 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/Refund'
+    Refund:
+      type: object
+      properties:
+        id:
+          type: string
+          description: BitPay refund ID.
+        invoiceId:
+          type: string
+        status:
+          type: string
+          enum:
+          - created
+          - pending
+          - cancelled
+          - manual
+          - immediate
+          - failed
+          - complete
+        amount:
+          type: number
+        currency:
+          type: string
+        lastRefundNotification:
+          type: string
+          format: date-time
+        refundFee:
+          type: number
+        immediate:
+          type: boolean
+        buyerPaysRefundFee:
+          type: boolean
+        reference:
+          type: string
+        requestDate:
+          type: string
+          format: date-time
     ErrorResponse:
       type: object
       properties:
@@ -254,39 +290,3 @@ components:
         reference:
           type: string
           description: Merchant-provided reference for the refund.
-    Refund:
-      type: object
-      properties:
-        id:
-          type: string
-          description: BitPay refund ID.
-        invoiceId:
-          type: string
-        status:
-          type: string
-          enum:
-          - created
-          - pending
-          - cancelled
-          - manual
-          - immediate
-          - failed
-          - complete
-        amount:
-          type: number
-        currency:
-          type: string
-        lastRefundNotification:
-          type: string
-          format: date-time
-        refundFee:
-          type: number
-        immediate:
-          type: boolean
-        buyerPaysRefundFee:
-          type: boolean
-        reference:
-          type: string
-        requestDate:
-          type: string
-          format: date-time

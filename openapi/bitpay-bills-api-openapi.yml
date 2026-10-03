@@ -284,6 +284,51 @@ components:
         quantity:
           type: integer
           description: Quantity of the item.
+    BillResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Bill'
+    Bill:
+      type: object
+      properties:
+        id:
+          type: string
+          description: BitPay bill ID.
+        status:
+          type: string
+          enum:
+          - draft
+          - sent
+          - new
+          - paid
+          - acknowledged
+          - refunded
+          - cancelled
+          - unpaid
+          - sentAndPaid
+        url:
+          type: string
+          format: uri
+        number:
+          type: string
+        currency:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        dueDate:
+          type: string
+          format: date-time
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillItem'
+        token:
+          type: string
+        merchant:
+          type: string
     ErrorResponse:
       type: object
       properties:
@@ -299,11 +344,6 @@ components:
         code:
           type: integer
           description: Numeric error code.
-    BillResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Bill'
     CreateBillRequest:
       type: object
       required:
@@ -366,43 +406,3 @@ components:
           description: List of line items on the bill.
           items:
             $ref: '#/components/schemas/BillItem'
-    Bill:
-      type: object
-      properties:
-        id:
-          type: string
-          description: BitPay bill ID.
-        status:
-          type: string
-          enum:
-          - draft
-          - sent
-          - new
-          - paid
-          - acknowledged
-          - refunded
-          - cancelled
-          - unpaid
-          - sentAndPaid
-        url:
-          type: string
-          format: uri
-        number:
-          type: string
-        currency:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
-        dueDate:
-          type: string
-          format: date-time
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/BillItem'
-        token:
-          type: string
-        merchant:
-          type: string

@@ -212,11 +212,30 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    InvoiceResponse:
+    Buyer:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/Invoice'
+        name:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        notify:
+          type: boolean
     Invoice:
       type: object
       properties:
@@ -286,6 +305,11 @@ components:
           type: string
         notificationURL:
           type: string
+    InvoiceResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Invoice'
     CreateInvoiceRequest:
       type: object
       required:
@@ -393,30 +417,6 @@ components:
           minimum: 0
           maximum: 900000
           description: Payment window in milliseconds (0-900000).
-    Buyer:
-      type: object
-      properties:
-        name:
-          type: string
-        address1:
-          type: string
-        address2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip:
-          type: string
-        country:
-          type: string
-        email:
-          type: string
-          format: email
-        phone:
-          type: string
-        notify:
-          type: boolean
     ErrorResponse:
       type: object
       properties:
