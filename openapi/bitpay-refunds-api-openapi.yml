@@ -202,11 +202,6 @@ paths:
                     type: boolean
 components:
   schemas:
-    RefundResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Refund'
     Refund:
       type: object
       properties:
@@ -243,21 +238,6 @@ components:
         requestDate:
           type: string
           format: date-time
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        error:
-          type: string
-          description: Error code or type.
-        message:
-          type: string
-          description: Human-readable error message.
-        code:
-          type: integer
-          description: Numeric error code.
     CreateRefundRequest:
       type: object
       required:
@@ -290,3 +270,23 @@ components:
         reference:
           type: string
           description: Merchant-provided reference for the refund.
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        error:
+          type: string
+          description: Error code or type.
+        message:
+          type: string
+          description: Human-readable error message.
+        code:
+          type: integer
+          description: Numeric error code.
+    RefundResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Refund'

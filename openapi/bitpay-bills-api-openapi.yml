@@ -269,26 +269,6 @@ paths:
                     example: success
 components:
   schemas:
-    BillItem:
-      type: object
-      required:
-      - price
-      - quantity
-      properties:
-        description:
-          type: string
-          description: Description of the line item.
-        price:
-          type: number
-          description: Unit price of the item.
-        quantity:
-          type: integer
-          description: Quantity of the item.
-    BillResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Bill'
     Bill:
       type: object
       properties:
@@ -329,6 +309,26 @@ components:
           type: string
         merchant:
           type: string
+    BillResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Bill'
+    BillItem:
+      type: object
+      required:
+      - price
+      - quantity
+      properties:
+        description:
+          type: string
+          description: Description of the line item.
+        price:
+          type: number
+          description: Unit price of the item.
+        quantity:
+          type: integer
+          description: Quantity of the item.
     ErrorResponse:
       type: object
       properties:
