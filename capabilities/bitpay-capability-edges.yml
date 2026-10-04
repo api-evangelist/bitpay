@@ -1,0 +1,36 @@
+slug: bitpay
+provider: BitPay
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Bills
+  spec_file: bitpay-bills-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.7
+  evidence: POST /bills  createBill  Create a Bill; POST /bills/{billId}/deliveries  deliverBill  Deliver
+    a Bill; schemas Bill, BillItem
+  reason: Bills are itemised payment requests created and delivered to a payer, i.e. customer invoicing
+    and collection — accounts receivable. Not the subscription-billing capability since there is no recurring
+    plan/metering surface.
+- tag: Invoices
+  spec_file: bitpay-invoices-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.7
+  evidence: POST /invoices  createInvoice  Create an Invoice; schemas Invoice, Buyer, CreateInvoiceRequest
+  reason: Creating and retrieving invoices against a Buyer to collect payment is customer invoicing /
+    receivables. No subscription or usage-rating context, so the cross-industry AR capability is the honest
+    fit.

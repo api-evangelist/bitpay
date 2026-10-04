@@ -235,6 +235,9 @@ apis:
   - type: Documentation
     url: https://developer.bitpay.com/reference/create-an-invoice
 common:
+  - type: CapabilityMap
+    url: capabilities/bitpay-capability-edges.yml
+    name: BitPay Business Capability Map
   - type: Website
     url: https://www.bitpay.com/
   - type: AgenticAccess
