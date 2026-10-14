@@ -21,9 +21,9 @@ edges:
       (j) providing transfer services for crypto-assets on behalf of clients'
     matched_domain: bitpay.com
     detected_by: sweep-crypto.py
-    detected: '2026-10-13'
+    detected: '2026-10-14'
   detected_by: sweep-crypto.py
-  first_seen: '2026-10-13'
+  first_seen: '2026-10-14'
 - partner_name: NYDFS (New York)
   partner: null
   type: contract
@@ -41,9 +41,9 @@ edges:
     evidence: https://www.bitpay.com/legal/terms-of-use/
     matched_by: verified-legal-name
     detected_by: sweep-crypto.py
-    detected: '2026-10-13'
+    detected: '2026-10-14'
   detected_by: sweep-crypto.py
-  first_seen: '2026-10-13'
+  first_seen: '2026-10-14'
 generated: '2026-10-13'
 method: searched
 checked:
