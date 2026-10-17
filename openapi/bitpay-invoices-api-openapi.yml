@@ -217,6 +217,45 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/Invoice'
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        error:
+          type: string
+          description: Error code or type.
+        message:
+          type: string
+          description: Human-readable error message.
+        code:
+          type: integer
+          description: Numeric error code.
+    Buyer:
+      type: object
+      properties:
+        name:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        notify:
+          type: boolean
     CreateInvoiceRequest:
       type: object
       required:
@@ -324,45 +363,6 @@ components:
           minimum: 0
           maximum: 900000
           description: Payment window in milliseconds (0-900000).
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        error:
-          type: string
-          description: Error code or type.
-        message:
-          type: string
-          description: Human-readable error message.
-        code:
-          type: integer
-          description: Numeric error code.
-    Buyer:
-      type: object
-      properties:
-        name:
-          type: string
-        address1:
-          type: string
-        address2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip:
-          type: string
-        country:
-          type: string
-        email:
-          type: string
-          format: email
-        phone:
-          type: string
-        notify:
-          type: boolean
     Invoice:
       type: object
       properties:
