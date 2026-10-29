@@ -64,53 +64,161 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-BitPay is a cryptocurrency payment processing platform providing REST APIs for accepting Bitcoin and altcoin payments. Merchants use BitPay to create invoices, manage refunds, process payouts, and access settlement and ledger data. BitPay handles cryptocurrency conversion and settles funds daily to bank accounts or cryptocurrency wallets.
+BitPay is a cryptocurrency payment processing platform offering REST APIs for accepting Bitcoin and altcoin payments, creating invoices, managing refunds, processing payouts, and accessing settlement and ledger data. BitPay handles cryptocurrency conversion and fiat settlement to bank accounts and crypto wallets.
 
-## APIs
+**Areas:** Cryptocurrency · Payments · Bitcoin · Blockchain · Invoices · Payouts · Settlement
 
-- **Invoices API** - Create and manage time-sensitive payment requests with 15-minute price locks
-- **Bills API** - Send payment requests to specific buyers with fixed-price line items
-- **Payouts API** - Submit cryptocurrency payments to recipients for disbursements and payroll
-- **Refunds API** - Process full or partial refunds associated with invoices
-- **Settlements API** - Access transfer reports for payments settled to merchant accounts
-- **Rates API** - Retrieve exchange rate data for supported cryptocurrencies and fiat currencies
-- **Ledgers API** - Access account balance records and ledger entries by currency
+## BitPay on APIs.io
 
-## Authentication
+Everything profiled for BitPay is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/bitpay/](https://apis.io/providers/bitpay/)** — or go straight to one of the APIs or properties below.
 
-BitPay uses token-based API access with two facades:
+### APIs (13)
 
-- **POS Facade** - No cryptographic signing required; tokens created in the merchant dashboard
-- **Merchant Facade** - Requires ECDSA-signed requests via `X-Identity` and `X-Signature` headers
+- [BitPay Bills API](https://apis.io/apis/bitpay/bitpay-bills-api/) — Manage payment requests sent to specific buyers with fixed-price line items typically denominated in fiat currency. Supports email billing and recurring…
+- [BitPay Payouts API](https://apis.io/apis/bitpay/bitpay-payouts-api/) — Submit cryptocurrency withdrawal payments to active BitPay recipients for customer payouts, marketplace disbursements, affiliate networks, and payroll…
+- [BitPay Refunds API](https://apis.io/apis/bitpay/bitpay-refunds-api/) — Process full or partial refunds associated with invoices. Supports automatic handling of underpaid and overpaid amounts with cryptocurrency refund workflows.
+- [BitPay Settlements API](https://apis.io/apis/bitpay/bitpay-settlements-api/) — Access transfer reports documenting payment profits settled from BitPay to merchant bank accounts and cryptocurrency wallets. Supports USD, EUR, GBP, CAD,…
+- [BitPay Rates API](https://apis.io/apis/bitpay/bitpay-rates-api/) — Retrieve exchange rate data representing fiat currency equivalents per cryptocurrency unit. Supports BTC, ETH, BCH, XRP, DOGE, and stablecoins against major…
+- [BitPay Ledgers API](https://apis.io/apis/bitpay/bitpay-ledgers-api/) — Access account balance records by currency and track individual ledger entries. Provides accounting data for merchant financial reconciliation.
+- [BitPay Bills API](https://apis.io/apis/bitpay/bitpay-bills-api/) — Manage payment requests sent to specific buyers with fixed-price line items.
+- [BitPay Invoices API](https://apis.io/apis/bitpay/bitpay-invoices-api/) — Create and manage time-sensitive payment requests with fixed prices in fiat or cryptocurrency.
+- [BitPay Ledgers API](https://apis.io/apis/bitpay/bitpay-ledgers-api/) — Access account balance records by currency and track individual ledger entries.
+- [BitPay Payouts API](https://apis.io/apis/bitpay/bitpay-payouts-api/) — Submit cryptocurrency withdrawal payments to active BitPay recipients.
+- [BitPay Rates API](https://apis.io/apis/bitpay/bitpay-rates-api/) — Retrieve exchange rate data representing fiat currency equivalents per cryptocurrency unit.
+- [BitPay Refunds API](https://apis.io/apis/bitpay/bitpay-refunds-api/) — Process full or partial refunds associated with invoices.
+- [BitPay Settlements API](https://apis.io/apis/bitpay/bitpay-settlements-api/) — Access transfer reports documenting payment profits settled from BitPay.
 
-All requests must include `X-Accept-Version: 2.0.0`.
+### Published properties
 
-## SDKs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Official client libraries are available for:
+#### Agentic access (1)
 
-- Node.js / TypeScript
-- Java
-- C# (.NET)
-- Python
-- PHP
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Pricing
+- [Bitpay Agentic Access](https://apis.io/agentic-access/bitpay/bitpay-agentic-access/)
 
-Volume-based tiered per-transaction pricing with no monthly subscription fee:
+#### JSON Schema (2)
 
-| Monthly Volume | Fee |
+The data models the API reads and writes.
+
+- [BitPay Invoice](https://apis.io/schemas/bitpay/invoice/)
+- [BitPay Payout](https://apis.io/schemas/bitpay/payout/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Bitpay Context](https://apis.io/jsonld/bitpay/bitpay/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Create Invoice](https://apis.io/examples/bitpay/create-invoice/)
+- [Create Payout](https://apis.io/examples/bitpay/create-payout/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [BitPay Bills API](https://apis.io/collections/bitpay/open-bitpay-bills-api/)
+- [BitPay Bills Invoices API](https://apis.io/collections/bitpay/open-bitpay-invoices-api/)
+- [BitPay Bills Ledgers API](https://apis.io/collections/bitpay/open-bitpay-ledgers-api/)
+- [BitPay Bills Payouts API](https://apis.io/collections/bitpay/open-bitpay-payouts-api/)
+- [BitPay Bills Rates API](https://apis.io/collections/bitpay/open-bitpay-rates-api/)
+- [BitPay Bills Refunds API](https://apis.io/collections/bitpay/open-bitpay-refunds-api/)
+- [BitPay Bills Settlements API](https://apis.io/collections/bitpay/open-bitpay-settlements-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [BitPay — jsonschema rules](https://apis.io/rules/bitpay/bitpay-jsonschema-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Bitpay Domain Security](https://apis.io/security/bitpay/bitpay-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Plans](https://apis.io/plans/bitpay/plans/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Rate Limits](https://apis.io/rate-limits/bitpay/rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Finops](https://apis.io/finops/bitpay/finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.bitpay.com/)
+- [Documentation](https://developer.bitpay.com/docs)
+- [Support](https://support.bitpay.com/hc/en-us)
+- [Blog](https://bitpay.com/blog)
+- [Terms of service](https://www.bitpay.com/legal/terms-of-use)
+
+## API Evangelist rating
+
+**Kin Score 31.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
 |---|---|
-| Under $500,000 | 2% + $0.25 |
-| $500,000 - $999,999 | 1.5% + $0.25 |
-| $1,000,000+ | 1% + $0.25 |
+| Discoverability | 57.1 |
+| Contract quality | 50.9 |
+| Contract governance | 9.8 |
+| Operational transparency | 9.2 |
+| Developer ergonomics | 25.0 |
+| Access clarity | 31.6 |
 
-## Resources
+**Agent readiness 33.7** — agent-ready
 
-- Developer Portal: https://developer.bitpay.com/docs
-- API Reference: https://developer.bitpay.com/reference/concepts
-- Status Page: https://status.bitpay.com/
-- Support: https://support.bitpay.com/hc/en-us
-- Terms of Use: https://www.bitpay.com/legal/terms-of-use
-- GitHub: https://github.com/bitpay
-- Pricing: https://bitpay.com/pricing
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | unknown |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 18.8** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/bitpay/](https://apis.io/providers/bitpay/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for BitPay: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/bitpay/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
